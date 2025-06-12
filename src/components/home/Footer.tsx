@@ -65,11 +65,11 @@ const Footer = () => {
               {/* <h1 className="text-[30px]">Vaidik Vivah</h1> */}
             </div>
             <p className="font-Proxima-Nova-Regular text-pretty font-[Bembo-MT-Pro-Light]">
-              In the spirit of reconciliation, Wedlock acknowledges the
-              Traditional Custodians of country throughout Australia and their
-              connections to land, sea and community. We pay our respect to
-              their elders past and present and extend that respect to all
-              Aboriginal and Torres Strait Islander peoples today.
+              In the spirit of respect and inclusion, Vaidik Vivah acknowledges the Indigenous
+               communities and traditional custodians of the diverse regions across India. We 
+               honour their deep spiritual connection to the land, water, and culture. We pay 
+               our respects to their elders past and present and extend that respect to all 
+               Indigenous peoples across the nation today.
             </p>
           </div>
 
