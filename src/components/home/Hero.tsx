@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 // import heroImg from "../../assets/bg.png";
-import heroImg from "../../assets/Banner-3.jpeg";
+import heroImg from "../../assets/Banner-7.jpeg";
 
 function Hero() {
   return (
@@ -9,6 +9,7 @@ function Hero() {
       style={{
         backgroundImage: `url(${heroImg})`,
         width: "100%",
+        opacity:"95%"
         // Zoom effect (adjust percentage as needed)
       }}
     >

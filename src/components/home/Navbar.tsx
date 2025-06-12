@@ -75,33 +75,33 @@ const Navbar: React.FC = () => {
   return (
     <>
       <div
-        className={`absolute navbar z-50 w-full h-auto 3xl:px-32 7xl:px-32 8xl:px-32 xl:px-10 text-white ${isBlueBgRoute ? "bg-[#9e2727] h-20" : " "
+        className={`absolute navbar z-50 w-full h-auto 3xl:px-32 7xl:px-32 8xl:px-32 xl:px-10 text-white ${isBlueBgRoute ? "bg-[#9e2727] h-10" : " "
           }`}
       >
         <div className={`${isBlueBgRoute ? " " : " bg-[#9e2727] "}`}></div>
         <div className="flex justify-between items-center container w-full m-auto">
           <div className="flex items-center justify-between w-full">
-            <div className="text-white hidden md:flex flex-1 pt-20 lg:pt-0  justify-start ml-12">
+            <div className="text-white hidden md:flex flex-1 pt-10 lg:pt-0  justify-start ml-12">
               <ul className="flex gap-5 text-[22px] font-Proxima-Nova-SemiBold ">
                 
-                <Link to={"/"}>
+                {/* <Link to={"/"}>
                   <img
                     src="/newlogo.png"
                     alt="logo"
-                    className="w-[10rem] h-[8rem] xl:w-[16rem] xl:h-[8rem]"
+                    className="w-[12rem] h-[10rem] xl:w-[18rem] xl:h-[10rem]"
                   />
                   {/* <h1 className="text-white text-[30px]">Vaidik Vivah</h1> */}
-                </Link>
+                {/* </Link> */} 
               </ul>
             </div>
             <div className="flex justify-center ">
-              {/* <Link to={"/"}>
+              <Link to={"/"}>
                 <img
-                  src="/newlogo.png"
-                  alt="logo"
-                  className="w-[10rem] h-[8rem] xl:w-[16rem] xl:h-[8rem]"
-                />
-              </Link> */}
+                    src="/logotest.png"
+                    alt="logo"
+                    className="w-[20rem] h-[15rem] xl:w-[25rem] xl:h-[12rem]"
+                  />
+              </Link>
             </div>
             <div className="flex gap-5 items-center justify-end flex-1 pt-2">
               <button
