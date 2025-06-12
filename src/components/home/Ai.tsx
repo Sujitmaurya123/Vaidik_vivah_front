@@ -62,7 +62,7 @@ const Ai = () => {
           </div>
 
           {/* Header Section */}
-          <div className="text-center md:text-center space-y-6 w-full mx-auto md:mx-0">
+          <div className="text-center p-5 md:text-center space-y-6 w-full mx-auto md:mx-0 bg-[#a44949] text-white rounded-2xl">
             <h1 className="font-Bembo-MT-Pro-Bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
               Smarter connections with{" "}
               <span className="block md:inline">AI-Powered match suggestions</span>

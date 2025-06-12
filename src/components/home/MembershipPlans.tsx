@@ -28,9 +28,26 @@ const MembershipPlans = () => {
                     </button>
                 </div>
 
-                {/* Paid Plan */}
+                {/* Standard Plan */}
                 <div className="w-full max-w-sm bg-[#a44949] text-white shadow-lg rounded-lg p-6 text-left">
-                    <h3 className="text-[20px] font-semibold mb-4">Paid</h3>
+                    <h3 className="text-[20px] font-semibold mb-4">Standard </h3>
+                    <ul className="space-y-3 text-md">
+                        <li>✅ Browse Profiles</li>
+                        <li>✅ Shortlist & Send Interest</li>
+                        <li>✅ Message & chat with unlimited users</li>
+                        <li>✅ Get up to 3x more matches daily</li>
+                        <li>✅ Unlock access to advanced search</li>
+                        <li>✅ View contact details</li>
+                        <li>❌ Make unlimited voice and video calls</li>
+                        <li>❌ Get 3 free Spotlights</li>
+                    </ul>
+                    <button className="mt-6 w-full bg-white text-[#a44949] text-md font-semibold py-2 rounded-md transition">
+                        Browse Membership Plans
+                    </button>
+                </div>
+                {/* VIP Plan */}
+                <div className="w-full max-w-sm bg-[#a44949] text-white shadow-lg rounded-lg p-6 text-left">
+                    <h3 className="text-[20px] font-semibold mb-4">VIP</h3>
                     <ul className="space-y-3 text-md">
                         <li>✅ Browse Profiles</li>
                         <li>✅ Shortlist & Send Interest</li>
