@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src="/logotest.png"
+              src="/logotest3.png"
               alt="logo"
               className="h-24 w-auto md:h-24"
             />
@@ -58,18 +58,18 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Hamburger */}
-          <button title="hamburger" className="md:hidden text-white text-3xl" onClick={toggleSidebar}>
+          <button title="hamburger" className="md:hidden text-white text-3xl cursor-pointer" onClick={toggleSidebar}>
             <GiHamburgerMenu />
           </button>
         </nav>
 
         {/* Mobile Sidebar */}
         <aside
-          className={`fixed top-0 left-0 h-full w-64 bg-[#9e2727] z-40 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          className={`fixed top-0 left-0 h-full w-64 bg-[#9e2727] z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
-          <div className="flex items-center justify-between p-4 border-b border-white">
-            <img src="/logotest.png" alt="logo" className="h-16 w-auto" />
-            <button className="text-white text-3xl" onClick={toggleSidebar}>
+          <div className="flex items-center justify-between p-6 border-b border-white">
+            <img src="/logotest3.png" alt="logo" className="h-16 w-auto" />
+            <button title="button" className="text-white text-3xl ml-0 cursor-pointer" onClick={toggleSidebar}>
               <RiCloseLine />
             </button>
           </div>

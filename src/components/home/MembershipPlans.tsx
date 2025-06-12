@@ -1,8 +1,8 @@
 const MembershipPlans = () => {
     return (
         <div className="bg-white py-16 px-6 lg:px-20 text-center">
-            <h2 className="text-[28px] md:text-[48px] xl:text-[64px]  text-gray-800">
-                <span className="text-[#a44949] font-[Bembo-MT-Pro-Bold] ">Membership</span> Plans
+            <h2 className="text-[28px] md:text-[48px] xl:text-[64px]  text-gray-800 font-[Bembo-MT-Pro-Bold]">
+                <span className="text-[#a44949]  ">Membership</span> Plans
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto mt-4 font-[Bembo-MT-Pro-Light]">
                 Upgrade your plan as per your customized requirements. With a paid membership, you can seamlessly

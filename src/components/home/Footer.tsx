@@ -58,9 +58,9 @@ const Footer = () => {
           <div className="space-y-5 lg:col-span-2">
             <div className="flex items-center">
               <img
-                src="/logotest.png"
+                src="/logotest3.png"
                 alt="logo"
-                className="w-[12rem] h-[10rem] xl:w-[18rem] xl:h-[10rem]"
+                className="h-24 w-auto md:h-24"
               />
               {/* <h1 className="text-[30px]">Vaidik Vivah</h1> */}
             </div>
