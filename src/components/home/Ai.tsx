@@ -6,20 +6,14 @@ const Ai = () => {
           
 
           {/* Testimonial Card */}
-          <div className="relative flex justify-center">
+          {/* <div className="relative flex justify-center">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl w-full max-w-6xl p-6 md:p-8 lg:p-10 relative overflow-hidden">
-              {/* Recommended Badge */}
-              {/* <div className="absolute -top-6 right-4 md:-top-8 md:right-8 w-28 md:w-40 lg:w-48 z-10">
-                <img
-                  src="/recomended.png"
-                  alt="Recommended"
-                  className="w-full h-auto drop-shadow-lg"
-                />
-              </div> */}
+              
+             
 
-              {/* Content */}
+              
               <div className="flex flex-col lg:flex-row gap-[90px] md:gap-[120px] items-center">
-                {/* Image Section */}
+               
                 <div className="w-full lg:w-1/2">
                   <div className="relative overflow-hidden rounded-xl aspect-[4/5] shadow-2xl">
                     <img
@@ -31,7 +25,7 @@ const Ai = () => {
                   </div>
                 </div>
 
-                {/* Text Content */}
+               
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div className="space-y-4">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic">
@@ -59,15 +53,15 @@ const Ai = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Header Section */}
           <div className="text-center p-5 md:text-center space-y-6 w-full mx-auto md:mx-0 bg-[#a44949] text-white rounded-2xl">
-            <h1 className="font-Bembo-MT-Pro-Bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+            <h1 className="font-[Bembo-MT-Pro-Bold] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
               Smarter connections with{" "}
               <span className="block md:inline">AI-Powered match suggestions</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl leading-relaxed opacity-90 font-Bembo-MT-Pro-Regular">
+            <p className="text-lg sm:text-xl md:text-2xl leading-relaxed opacity-90 font-[Bembo-MT-Pro-Regular]">
               Match recommendations to suit your preferences and interests. Our AI-powered algorithm ensures you connect with the right people.
             </p>
           </div>

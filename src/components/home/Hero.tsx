@@ -5,12 +5,10 @@ import heroImg from "../../assets/Banner-7.jpeg";
 function Hero() {
   return (
     <div
-      className="relative hero_section  bg-cover  bg-no-repeat   overflow-hidden min-h-screen 7xl:h-[100vh]   top-0 py-0   sm:py-0 3xl:h-[100vh]  xl:h-[100vh]   5xl:h-[100vh]   4xl:h-[100vh]  "
+      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{
         backgroundImage: `url(${heroImg})`,
-        width: "100%",
-        opacity:"95%"
-        // Zoom effect (adjust percentage as needed)
+        opacity: 0.95,
       }}
     >
       <div className="absolute inset-0"></div>
@@ -18,11 +16,11 @@ function Hero() {
       <div className="relative 3xl:pl-30   bg-opacity-40 text-white min-h-screen md:pl-16 md:flex md:px-10 gap-80 ">
         <div className="  2xl:px-20 py-28 max-md:mt-0 mt-10 xl:w-[100%] flex justify-center items-start">
           <div className=" text-center container   xl:w-[100%]  hero_content ">
-            <h1 className="text-[3rem] sm:text-[60px]  md:text-[80px] lg:text-[100px] xl:text-[80px] text-[#FFFFFF] font-Bembo-MT-Pro-Bold leading-[60px] md:leading-[80px] lg:leading-[150px] xl:leading-[120px]  pt-32 xl:-tracking-normal">
+            <h1 className="text-[3rem] sm:text-[60px]  md:text-[80px] lg:text-[100px] xl:text-[80px] text-[#FFFFFF] font-[Bembo-MT-Pro-Bold] leading-[60px] md:leading-[80px] lg:leading-[150px] xl:leading-[120px]  pt-32 xl:-tracking-normal">
               जहाँ मिलती हैं पूर्वजन्म की जोड़ियाँ
             </h1>
             <p
-              className="  text-[#FFFFFF] py-10 text-[18px] xl:text-[28px] xl:pt-5 px-2 font-Bembo-MT-Pro-Regular"
+              className="  text-[#FFFFFF] py-10 text-[18px] xl:text-[28px] xl:pt-5 px-2 font-[Bembo-MT-Pro-Regular]"
               style={{
                 lineHeight: "42px",
                 letterSpacing: "2%",
@@ -34,7 +32,7 @@ function Hero() {
 
             <Link
               to="/questions"
-              className="relative z-10 flex items-center justify-center bg-[#9e2727] rounded-full w-[249px] h-[64px] text-[22px] text-white mx-auto xl:mt-8 font-Proxima-Nova-SemiBold"
+              className="relative z-10 flex items-center justify-center bg-[#9e2727] rounded-full w-[249px] h-[64px] text-[22px] text-white mx-auto xl:mt-8 font-[Bembo-MT-Pro-Regular]"
             >
               <span>Start free today</span>
             </Link>

@@ -2,14 +2,14 @@ const MembershipPlans = () => {
     return (
         <div className="bg-white py-16 px-6 lg:px-20 text-center">
             <h2 className="text-[28px] md:text-[48px] xl:text-[64px]  text-gray-800">
-                <span className="text-[#a44949] font-Bembo-MT-Pro-Bold ">Membership</span> Plans
+                <span className="text-[#a44949] font-[Bembo-MT-Pro-Bold] ">Membership</span> Plans
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mt-4 font-Bembo-MT-Pro-light">
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4 font-[Bembo-MT-Pro-Light]">
                 Upgrade your plan as per your customized requirements. With a paid membership, you can seamlessly
                 connect with your prospects and get more responses. Here are some key benefits:
             </p>
 
-            <div className="mt-12 flex flex-col lg:flex-row items-center justify-center gap-10">
+            <div className="mt-12 flex flex-col lg:flex-row items-center justify-center gap-10 font-[Bembo-MT-Pro-Regular]">
                 {/* Free Plan */}
                 <div className="w-full max-w-sm bg-[#955454] text-white border border-gray-200 shadow rounded-lg p-6 text-left">
                     <h3 className="text-[20px] font-semibold mb-4">Free</h3>

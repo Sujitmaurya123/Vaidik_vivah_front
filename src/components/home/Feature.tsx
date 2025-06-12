@@ -6,12 +6,12 @@ const Feature = () => {
 
           {/* Left Column: Text */}
           <div className="w-full lg:w-1/2 space-y-6 animate-fade-in">
-            <h1 className="text-[28px] font-Bembo-MT-Pro-Bold md:text-[48px] xl:text-[64px] font-bold leading-tight tracking-tight">
+            <h1 className="text-[28px] font-[Bembo-MT-Pro-Bold] md:text-[48px] xl:text-[64px] font-bold leading-tight tracking-tight">
               Introducing
               <br className="hidden xl:block" />
               <span className="text-white">Vaidik Vivah Meet!</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-lg font-Bembo-MT-Pro-Regular">
+            <p className="text-lg md:text-xl text-white/90 max-w-lg font-[Bembo-MT-Pro-Regular]">
             Where ancient Vedic wisdom meets today’s technology — find your true match with Vaidik Vivah.
             </p>
            

@@ -7,7 +7,7 @@ const Matching = () => {
     return (
         <div className="bg-white py-16 px-6 sm:px-10">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-sm  font-Bembo-MT-Pro-Bold text-gray-500 uppercase tracking-widest">
+                <h2 className="text-sm  font-[Bembo-MT-Pro-Bold] text-gray-500 uppercase tracking-widest">
                     Personalized Matchmaking Service
                 </h2>
                 <h1 className="text-4xl font-Bembo-MT-Pro-Bold mt-4 text-[#a44949]">
@@ -17,7 +17,7 @@ const Matching = () => {
                 <div className="mt-6 flex justify-center">
                     <button
                         onClick={() => navigate("/exclusive")}
-                        className="bg-[#a44949] text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-[Proxima-Nova-SemiBold] transition-transform hover:scale-105 shadow-lg"
+                        className="bg-[#a44949] text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-[Bembo-MT-Pro-Regular] transition-transform hover:scale-105 shadow-lg"
                     >
                         Start Today
                     </button>
@@ -51,10 +51,10 @@ const Matching = () => {
                     ].map((item, index) => (
                         <div key={index} className="text-center">
                             <div className="bg-[#a44949]   rounded-full w-20 h-20 flex justify-center items-center mx-auto shadow-md">
-                                <img src={item.icon} alt={item.title} className="w-10 h-10 " />
+                                <img src={item.icon} alt={item.title} className="w-10 h-10 font-[Bembo-MT-Pro-Regular]" />
                             </div>
                             <h3 className="font-semibold text-lg mt-4">{item.title}</h3>
-                            <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                            <p className="text-gray-600 mt-2 text-sm leading-relaxed font-[Bembo-MT-Pro-Light]">
                                 {item.description}
                             </p>
                         </div>

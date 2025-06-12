@@ -12,19 +12,21 @@ import Feature from '../../components/home/Feature'
 import MembershipPlans from '../../components/home/MembershipPlans'
 // import Pre from '../../components/home/Pre'
 import "./home.css"
+import WeddingSlider from '../../components/home/WeddingSlider'
 const Home = () => {
     return (
         <div>
             <Hero />
             <Archive />
             <Matching />
-            <GetApp />
             {/* <YouTube /> */}
             {/* <Stories /> */}
             {/* <Pre/> */}
             <MembershipPlans />
             <Feature />
+            <WeddingSlider/>
             <Ai />
+            <GetApp />
             {/* <Search /> */}
             {/* <Details /> */}
 

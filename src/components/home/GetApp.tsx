@@ -8,17 +8,17 @@ const GetApp = () => {
 
                     {/* Text Part */}
                     <div className="flex-1 w-full">
-                        <h1 className="text-[28px] md:text-[48px] xl:text-[64px] xl:leading-[83.2px] font-[font-Bembo-MT-Pro-Bold] tracking-[-0.02em]">
+                        <h1 className="text-[28px] md:text-[48px] xl:text-[64px] xl:leading-[83.2px] font-[Bembo-MT-Pro-Bold] tracking-[-0.02em]">
                             Get the app!
                         </h1>
-                        <p className="text-[20px] font-font-Bembo-MT-Pro-Light sm:text-[16px] md:text-[20px] lg:text-[24px] xl:text-[28px] pt-5 leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px]">
+                        <p className="text-[20px] font-[Bembo-MT-Pro-Light] sm:text-[16px] md:text-[20px] lg:text-[24px] xl:text-[28px] pt-5 leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px]">
                             Download our app now to discover meaningful
                             <br className="hidden md:block" /> matches with smart AI compatibility.
                         </p>
                     </div>
 
                     {/* Logo Button Part */}
-                    <div className="flex flex-1 w-full justify-start md:justify-end items-center space-x-4 mt-4 md:mt-0">
+                    <div className="flex flex-1 w-full justify-start md:justify-end items-center space-x-4 mt-4 md:mt-0 gap-3">
                         <button
                             className="p-0 m-0 flex items-center"
                             onClick={() =>
