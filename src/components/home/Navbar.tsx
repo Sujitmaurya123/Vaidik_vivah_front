@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-import Login from "../model/Login";
+// import Login from "../model/Login";
 // import { useSelector } from "react-redux";
 // import { RootState } from "../../Redux/store";
 
@@ -85,12 +85,12 @@ const Navbar: React.FC = () => {
               <ul className="flex gap-5 text-[22px] font-Proxima-Nova-SemiBold ">
                 
                 <Link to={"/"}>
-                  {/* <img
+                  <img
                     src="/newlogo.png"
                     alt="logo"
                     className="w-[10rem] h-[8rem] xl:w-[16rem] xl:h-[8rem]"
-                  /> */}
-                  <h1 className="text-white text-[30px]">Vaidik Vivah</h1>
+                  />
+                  {/* <h1 className="text-white text-[30px]">Vaidik Vivah</h1> */}
                 </Link>
               </ul>
             </div>
@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
               </button>
             </div>
           </div>
-          <Login  />
+          {/* <Login  /> */}
         </div>
 
         <div
