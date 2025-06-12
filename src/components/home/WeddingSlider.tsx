@@ -71,7 +71,7 @@ export default function WeddingSlider() {
                     <h2 className="text-2xl font-bold italic text-rose-700">
                         "{slides[current].name}"
                     </h2>
-                    <p className="text-rose-600  text-wrap">{slides[current].description}</p>
+                    <p className="text-rose-600  lg:w-[500px] text-wrap">{slides[current].description}</p>
                     <div className="text-rose-700 space-y-1">
                         <p>⭐ Married in: {slides[current].date}</p>
                         <p>📍 From: {slides[current].location}</p>

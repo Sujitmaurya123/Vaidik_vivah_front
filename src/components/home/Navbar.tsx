@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Buttons */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4 font-[Bembo-MT-Pro-Regular]">
             <Link to="/register">
               <button className="bg-white text-[#9e2727] font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition">
                 Register
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
               <RiCloseLine />
             </button>
           </div>
-          <ul className="flex flex-col p-4 space-y-3 text-white text-lg">
+          <ul className="flex flex-col p-4 space-y-3 text-white text-lg font-[Bembo-MT-Pro-Regular]">
             <li><Link to="/mission" onClick={toggleSidebar}>Mission</Link></li>
             <li><Link to="/advice" onClick={toggleSidebar}>Advice</Link></li>
             <li><Link to="/help" onClick={toggleSidebar}>Help</Link></li>

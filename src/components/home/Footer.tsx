@@ -64,7 +64,7 @@ const Footer = () => {
               />
               {/* <h1 className="text-[30px]">Vaidik Vivah</h1> */}
             </div>
-            <p className="font-Proxima-Nova-Regular text-pretty">
+            <p className="font-Proxima-Nova-Regular text-pretty font-[Bembo-MT-Pro-Light]">
               In the spirit of reconciliation, Wedlock acknowledges the
               Traditional Custodians of country throughout Australia and their
               connections to land, sea and community. We pay our respect to
@@ -75,8 +75,8 @@ const Footer = () => {
 
           {/* Mission Links */}
           <div>
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">Mission</h3>
-            <ul className="font-Proxima-Nova-Regular space-y-2">
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Mission</h3>
+            <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
               <li><Link to="/advice" className="hover:text-[#007EAF]">Advice</Link></li>
               <li><Link to="/services" className="hover:text-[#007EAF]">Services</Link></li>
               <li><Link to="/subscription-tiers" className="hover:text-[#007EAF]">Subscription Tiers</Link></li>
@@ -88,8 +88,8 @@ const Footer = () => {
 
           {/* About Us Links */}
           <div>
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">About Us</h3>
-            <ul className="font-Proxima-Nova-Regular space-y-2">
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">About Us</h3>
+            <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
               <li><Link to="/community-guidelines" className="hover:text-[#007EAF]">Community Guidelines</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-[#007EAF]">Terms & Conditions</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-[#007EAF]">Privacy Policy</Link></li>
@@ -99,7 +99,7 @@ const Footer = () => {
 
           {/* Social Links - Now appears after Mission on tablet */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">Social</h3>
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Social</h3>
             <div className="flex gap-5 text-2xl">
               <Link title="link" to="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
