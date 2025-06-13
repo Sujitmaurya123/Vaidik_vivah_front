@@ -348,9 +348,9 @@ const Multistep = () => {
                     <div>
 
                         <div className="mt-10 w-full text-center ">
-                            <h2 className="text-2xl" style={{ fontFamily: "Bembo-MT-Pro-Bold, sans-serif" }}>
+                            {/* <h2 className="text-2xl" style={{ fontFamily: "Bembo-MT-Pro-Bold, sans-serif" }}>
                                 {PageTitles[page]}
-                            </h2>
+                            </h2> */}
                             <div className="mb-6 mt-1 h-2.5 rounded-full bg-[#9e2727]">
                                 <div
                                     className="h-2.5 rounded-full bg-[#31F7C8]"

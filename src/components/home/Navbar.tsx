@@ -3,12 +3,13 @@ import { RiCloseLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import LoginModal from "../model/Login";
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-
+  const [isModalOpen, setModalOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
   const isBlueBgRoute = [
@@ -46,21 +47,23 @@ const Navbar: React.FC = () => {
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-4 font-[Bembo-MT-Pro-Regular]">
             <Link to="/questions">
-              <button className="text-white bg-[#9e2727] font-semibold px-6 py-2 rounded-full  cursor-pointer transition">
+              <button className="text-white bg-[#9e2727]  px-6 py-2 rounded-full  cursor-pointer transition">
                 Register
               </button>
             </Link>
-            <Link to="/login">
-              <button className="text-white bg-[#9e2727] font-semibold px-6 py-2 rounded-full cursor-pointer transition">
+            
+              <button onClick={() => setModalOpen(true)}
+               className="text-white bg-[#9e2727]  px-6 py-2 rounded-full cursor-pointer transition">
                 Login
               </button>
-            </Link>
+           
           </div>
 
           {/* Hamburger */}
           <button title="hamburger" className="md:hidden text-white text-3xl cursor-pointer" onClick={toggleSidebar}>
             <GiHamburgerMenu />
           </button>
+          <LoginModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
         </nav>
 
         {/* Mobile Sidebar */}
