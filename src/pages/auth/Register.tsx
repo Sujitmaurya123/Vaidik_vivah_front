@@ -36,7 +36,7 @@ const Register = () => {
             className={`w-full py-2 px-4  rounded bg-[#ffffff]`}
            
           >
-
+            Submit
           </button>
         </form>
       </div>

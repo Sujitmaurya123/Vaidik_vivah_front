@@ -316,7 +316,7 @@ const Multistep = () => {
 
     return (
         <div className={`min-w-screen relative flex min-h-screen flex-col items-center  ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'} px-2 text-white md:px-28 lg:px-60 3xl:px-60`}>
-            <div className="mt-5 flex w-full items-center justify-between md:mt-10">
+            <div className="mt-5 flex w-full items-center justify-between md:mt-10   ">
                 {page > 0 ? (
                     <button
                         type="button"
@@ -345,7 +345,7 @@ const Multistep = () => {
             </div>
             {
                 isWelcome ? <Welcome handleNext={handleWelcomeContinue} /> :
-                    <div>
+                    <div >
 
                         <div className="mt-10 w-full text-center ">
                             {/* <h2 className="text-2xl" style={{ fontFamily: "Bembo-MT-Pro-Bold, sans-serif" }}>

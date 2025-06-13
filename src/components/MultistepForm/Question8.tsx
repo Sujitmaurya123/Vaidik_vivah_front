@@ -3,7 +3,7 @@ import React from "react";
 const question = [
     {
         id: 9,
-        text: "Are you looking for a partner living in Australia?",
+        text: "Are you looking for a partner living in India ?",
         summary:
             "Defining your location preference helps us prioritise matches within your desired region for convenience",
         options: ["Yes", "No", "Doesn't matter"],
