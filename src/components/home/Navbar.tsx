@@ -45,13 +45,13 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-4 font-[Bembo-MT-Pro-Regular]">
-            <Link to="/register">
-              <button className="bg-white text-[#9e2727] font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition">
+            <Link to="/questions">
+              <button className="text-white bg-[#9e2727] font-semibold px-6 py-2 rounded-full  cursor-pointer transition">
                 Register
               </button>
             </Link>
             <Link to="/login">
-              <button className="bg-white text-[#9e2727] font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition">
+              <button className="text-white bg-[#9e2727] font-semibold px-6 py-2 rounded-full cursor-pointer transition">
                 Login
               </button>
             </Link>
