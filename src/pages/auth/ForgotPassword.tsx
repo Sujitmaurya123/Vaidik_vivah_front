@@ -4,55 +4,46 @@ import Input from "../../components/input/Input"
 
 const ForgotPassword = () => {
     return (
-        <div className={`min-w-screen h-screen flex flex-col items-center justify-center  bg-[#007EAF]`}>
-            <div className="flex items-center justify-center mb-2 md:mb-10">
-                <Link to="/">
-                    <img src="/logowhite.png" alt="" className='w-72 h-24 top-10' />
+        <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#9e2727] `}>
+            <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
+                <Link to={"/"} className='fixed top-8'>
+                    <img src="/logotest3.png" alt="Logo" className='w-72 h-24 ' />
                 </Link>
             </div>
-            <div className="flex flex-col items-center justify-center mt-4">
+
+            <div className="flex flex-col items-center justify-center  mt-8 mb-4">
                 <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
-                    <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center">
+                    <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center ">
                         <img src="/confirm.png" alt="Star" className="w-6 h-6" />
                     </div>
                 </div>
-                <div className="flex flex-col items-center justify-center text-white mt-2">
-                    <h1 className="text-3xl font-bold">Create Your Password</h1>
-                    <p className="mt-4 md:text-lg text-center">
-                        Choose a strong password that is long, random, and unique. <br className="hidden md:inline" />
-                        It's best to avoid using common words and personal information.
+
+                <div className="flex flex-col items-center justify-center text-center text-white mt-4">
+                    <h1 className="text-4xl  font-[Bembo-MT-Pro-Bold]">Forgot password</h1>
+                    <p className="mt-4  text-md font-[Bembo-MT-Pro-Light]">
+                        You will receive OTP verification code via email for resetting your password
                     </p>
                 </div>
             </div>
-            <div className="w-full max-w-md px-2 py-4 mt-4">
-                <form >
-                    <div className="mb-4 relative">
-                        <Input
-                            label="Enter new password"
-                            placeholder="Password"
-                            type={"password"}
 
-                            className={`w-full rounded-md border-2 p-2 pr-10 `}
-                        />
+            <div className="w-full max-w-md px-2  py-4 font-[Bembo-MT-Pro-Bold]">
+                <form action="" className="space-y-6 rounded-[8px]" >
 
+                    <Input
+                        label="Email"
+                        type="email"
+                       
+                        placeholder="Enter your email"
+                    />
+                    
 
-                    </div>
+                    <button
+                        type="submit"
+                        className={`w-full py-2 px-4 text-red-600 rounded bg-[#ffffff]`}
+                        
 
-                    <div className="mb-4 relative">
-                        <Input
-                            label="Re-enter password"
-                            placeholder="Re-enter Password"
-                            type={"password"}
-
-                            className={`w-full rounded-md border-2 p-2 pr-10 `}
-                        />
-
-                    </div>
-
-                    <button type="submit" className={`bg-white text-[#007EAF] w-full h-10 rounded-md mt-4`}>
-
-                        Create Password
-
+                    >
+                      Send Email
                     </button>
                 </form>
             </div>

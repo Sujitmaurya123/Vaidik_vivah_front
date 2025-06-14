@@ -17,6 +17,15 @@ const VerifyOtp = lazy(() => import("./pages/auth/VerifyOtp"));
 const ChangePassword = lazy(() => import("./pages/auth/ChangePassword"));
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const CreatePassword = lazy(() => import("./pages/auth/CreatePassword"));
+const Personal = lazy(() => import("./pages/forms/PersonalDetails"));
+const Qualification = lazy(() => import("./pages/forms/QualificationDetails"));
+const Location = lazy(() => import("./pages/forms/LocationDetails"));
+const Photoupload = lazy(() => import("./pages/forms/PhotoUpload"));
+const Other = lazy(() => import("./pages/forms/OtherDetails"));
+const Success = lazy(() => import("./pages/forms/SuccessPage"));
+const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"));
+
+
 
 
 
@@ -42,6 +51,15 @@ function App() {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/verify-otp" element={<VerifyOtp />} />
+
+
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/personal-details" element={<Personal />} />
+          <Route path="/qualification-details" element={<Qualification />} />
+          <Route path="/location-details" element={<Location />} />
+          <Route path="/photoupload" element={<Photoupload />} />
+          <Route path="/other-details" element={<Other />} />
+          <Route path="/success" element={<Success />} />
 
           </Routes>
           </Suspense>

@@ -21,10 +21,11 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
 
             {/* Main Content */}
             <div className="flex mt-40 flex-col items-center justify-center text-center gap-5">
-                <h1 className=" text-4xl md:text-3xl font-bold">Welcome to Vaidik Vivah</h1>
-                <p className="text-2xl">
-                    Congratulations! You are now one step closer to find your preferred partner.
+                <h1 className="text-4xl md:text-3xl font-[Bembo-MT-Pro-Bold]">Begin Your Journey with Vaidik Vivah</h1>
+                <p className="text-2xl font-[Bembo-MT-Pro-Light]">
+                    You’ve taken the first meaningful step toward finding a life partner who shares your values and traditions.
                 </p>
+
                 <div className="flex flex-col md:flex-row gap-4 mt-2">
                     {/* <Link
                         to="/"

@@ -13,15 +13,22 @@ const questions = [
     },
 ];
 
-
-
 type QuestionProps = {
     selectedOptions: { questionId: number; answerValue: string | string[] }[];
     handleOptionChange: (questionId: number, answerValue: string | string[]) => void;
 };
 
-
 const Question1: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChange }) => {
+    const handleChange = (questionId: number, answerValue: string) => {
+        handleOptionChange(questionId, answerValue);
+
+        // If question 1 is answered, auto-fill question 2 with opposite
+        if (questionId === 1) {
+            const opposite = answerValue === "Man" ? "Woman" : "Man";
+            handleOptionChange(2, opposite);
+        }
+    };
+
     return (
         <div className="flex flex-col gap-10 py-6 ">
             {questions.map((question) => {
@@ -29,15 +36,15 @@ const Question1: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
 
                 return (
                     <div key={question.id} className="flex flex-col gap-4 ">
-                        <p className="font-Proxima-Nova-SemiBold text-white text-xl sm:text-2xl md:text-3xl">
+                        <p className="font-[Bembo-MT-Pro-Bold] text-white text-xl sm:text-2xl md:text-3xl">
                             {question.text}
                         </p>
 
                         <div className="relative w-full sm:w-[150px] md:w-[200px]">
-                            <select
+                            <select title="option"
                                 value={selected}
-                                onChange={(e) => handleOptionChange(question.id, e.target.value)}
-                                className="w-full appearance-none bg-white text-[#007EAF] border border-[#007EAF] rounded-xl px-5 py-3 text-base sm:text-lg font-medium shadow-md focus:outline-none focus:ring-2 focus:ring-[#007EAF] transition duration-200"
+                                onChange={(e) => handleChange(question.id, e.target.value)}
+                                className="w-full appearance-none bg-white text-[#007EAF] border border-[#007EAF] rounded-xl px-5 py-3  text-lg  shadow-md focus:outline-none focus:ring-2 focus:ring-[#007EAF] transition duration-200"
                             >
                                 <option value="" disabled>
                                     Select an option
@@ -66,9 +73,6 @@ const Question1: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
                 );
             })}
         </div>
-
-    
-      
     );
 };
 

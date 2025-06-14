@@ -28,7 +28,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 </div> */}
 
                 {/* Heading */}
-                <h2 className="text-2xl font-[Bembo-MT-Pro-Bold] text-center mb-4 ">Get Started</h2>
+                <h2 className="text-2xl font-[Bembo-MT-Pro-Bold] text-center mb-4 ">Login</h2>
                 <p className=" text-center mb-6 font-[Bembo-MT-Pro-Regular]">
                     Please fill in your Email and Password to Sign In.
                 </p>
@@ -53,14 +53,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                         />
                     </div>
 
-                    <div className="mb-6 font-[Bembo-MT-Pro-Regular]">
-                        <label className="block text-sm font-medium mb-1">Confirm Password</label>
-                        <input
-                            placeholder="Confirm Password"
-                            type="password"
-                            className="w-full px-4 py-2 border rounded-lg  outline-none"
-                        />
-                    </div>
+                    
 
                     <button
                         type="submit"
@@ -70,17 +63,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     </button>
                 </form>
                 {/* Footer Text */}
-                <div className="text-center text-sm space-y-1 font-[Bembo-MT-Pro-Regular]">
-                    <div className="flex flex-col xl:flex-row items-center justify-between xl:justify-between  mb-4 mt-2 ">
+                <div className=" text-sm space-y-1 font-[Bembo-MT-Pro-Regular]">
+                    <div className="flex justify-between items-center mb-4 mt-2">
                         <div className="flex items-center">
                             <input type="checkbox" id="rememberMe" className="mr-2" />
-                            <label htmlFor="rememberMe" className="text-[white]">
+                            <label htmlFor="rememberMe" className="text-white">
                                 Remember me
                             </label>
                         </div>
+
                         <Link
                             to="/forgot-password"
-                            className="text-[white] xl:mr-40 underline"
+                            className="text-white underline"
                         >
                             Forgot your login details?
                         </Link>
@@ -91,7 +85,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                         <span className="mx-4 text-[white]">Or</span>
                         <hr className="flex-grow border-gray-400" />
                     </div>
-                    <div className="flex xl:items-left xl:justify-left ">
+                    <div className="flex xl:items-center xl:justify-center ">
                         <p>
                             New User ?{" "}
                             <Link to="/questions" className="text-[white] underline ">

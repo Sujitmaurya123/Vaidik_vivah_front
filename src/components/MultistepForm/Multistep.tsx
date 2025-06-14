@@ -10,12 +10,12 @@ import { toast } from "sonner";
 import Welcome from "./Welcome";
 import Question1 from "./Question1";
 import Question2 from "./Question2";
-import Question3 from "./Question3";
-import Question4 from "./Question4";
+// import Question3 from "./Question3";
+// import Question4 from "./Question4";
 import Question5 from "./Question5";
 import Question6 from "./Question6";
 import Question7 from "./Question7";
-import Question8 from "./Question8";
+// import Question8 from "./Question8";
 import Question9 from "./Question9";
 import Question10 from "./Question10";
 import Question11 from "./Question11";
@@ -48,12 +48,12 @@ const Multistep = () => {
     const PageTitles = [
         "Question 1/11",
         "Question 2/11",
-        "Question 3/11",
-        "Question 4/11",
+        // "Question 3/11",
+        // "Question 4/11",
         "Question 5/11",
         "Question 6/11",
         "Question 7/11",
-        "Question 8/11",
+        // "Question 8/11",
         "Question 9/11",
         "Question 10/11",
         "Question 11/11",
@@ -77,63 +77,63 @@ const Multistep = () => {
                         handleOptionChange={handleOptionChange}
                     />
                 );
+            // case 2:
+            //     return (
+            //         <Question3
+            //             selectedOptions={selectedOptions}
+            //             handleOptionChange={handleOptionChange}
+            //         />
+            //     );
+            // case 3:
+            //     return (
+            //         <Question4
+            //             selectedOptions={selectedOptions}
+            //             handleOptionChange={handleOptionChange}
+            //         />
+            //     );
             case 2:
-                return (
-                    <Question3
-                        selectedOptions={selectedOptions}
-                        handleOptionChange={handleOptionChange}
-                    />
-                );
-            case 3:
-                return (
-                    <Question4
-                        selectedOptions={selectedOptions}
-                        handleOptionChange={handleOptionChange}
-                    />
-                );
-            case 4:
                 return (
                     <Question5
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 5:
+            case 3:
                 return (
                     <Question6
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 6:
+            case 4:
                 return (
                     <Question7
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 7:
-                return (
-                    <Question8
-                        selectedOptions={selectedOptions}
-                        handleOptionChange={handleOptionChange}
-                    />
-                );
-            case 8:
+            // case 5:
+            //     return (
+            //         <Question8
+            //             selectedOptions={selectedOptions}
+            //             handleOptionChange={handleOptionChange}
+            //         />
+            //     );
+            case 5:
                 return (
                     <Question9
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 9:
+            case 6:
                 return (
                     <Question10
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 10:
+            case 7:
                 return (
                     <Question11
                         selectedOptions={selectedOptions}
@@ -198,37 +198,37 @@ const Multistep = () => {
             }
         }
 
+        // if (page === 2) {
+        //     const hasAnsweredAll = selectedOptions.some(
+        //         (sel) => sel.questionId === 4
+        //     );
+        //     if (!hasAnsweredAll) {
+        //         toast.error("Please answer What are your wedding goals? before proceeding!");
+        //         return;
+        //     }
+        // }
+
+        // if (page === 3) {
+        //     const hasAnsweredAll = selectedOptions.some(
+        //         (sel) => sel.questionId === 5
+        //     );
+        //     if (!hasAnsweredAll) {
+        //         toast.error("Please answer How long have you been looking for? before proceeding!");
+        //         return;
+        //     }
+        // }
         if (page === 2) {
             const hasAnsweredAll = selectedOptions.some(
                 (sel) => sel.questionId === 4
-            );
-            if (!hasAnsweredAll) {
-                toast.error("Please answer What are your wedding goals? before proceeding!");
-                return;
-            }
-        }
-
-        if (page === 3) {
-            const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 5
-            );
-            if (!hasAnsweredAll) {
-                toast.error("Please answer How long have you been looking for? before proceeding!");
-                return;
-            }
-        }
-        if (page === 4) {
-            const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 6
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer For whom are you looking? before proceeding!");
                 return;
             }
         }
-        if (page === 5) {
+        if (page === 3) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 7
+                (sel) => sel.questionId === 5
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Your age  before proceeding!");
@@ -236,8 +236,8 @@ const Multistep = () => {
             }
         }
 
-        if (page === 6) { // Validation for Question 8
-            const answerValue = selectedOptions.find((sel) => sel.questionId === 8)?.answerValue;
+        if (page === 4) { // Validation for Question 8
+            const answerValue = selectedOptions.find((sel) => sel.questionId === 6)?.answerValue;
 
             if (!answerValue) {
                 toast.error("Please select both minimum and maximum age before proceeding!");
@@ -257,19 +257,19 @@ const Multistep = () => {
             }
         }
 
-        if (page === 7) {
-            const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 9
-            );
-            if (!hasAnsweredAll) {
-                toast.error("Please answer Are you looking for a partner living in Australia? before proceeding!");
-                return;
-            }
-        }
+        // if (page === 5) {
+        //     const hasAnsweredAll = selectedOptions.some(
+        //         (sel) => sel.questionId === 7
+        //     );
+        //     if (!hasAnsweredAll) {
+        //         toast.error("Please answer Are you looking for a partner living in Australia? before proceeding!");
+        //         return;
+        //     }
+        // }
 
-        if (page === 8) {
+        if (page === 5) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 10
+                (sel) => sel.questionId === 7
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Do you believe in horoscope match? before proceeding!");
@@ -277,9 +277,9 @@ const Multistep = () => {
             }
         }
 
-        if (page === 9) {
+        if (page === 6) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 11
+                (sel) => sel.questionId === 8
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Does religion and caste matter for your preferred partner? before proceeding!");
@@ -287,8 +287,8 @@ const Multistep = () => {
             }
         }
 
-        if (page === 10) {
-            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 12)?.answerValue;
+        if (page === 7) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 9)?.answerValue;
 
             if (!selectedAnswer || selectedAnswer.length === 0) {
                 toast.error("Please answer 'What are your interests and hobbies?' before proceeding!");
@@ -316,7 +316,7 @@ const Multistep = () => {
 
     return (
         <div className={`min-w-screen relative flex min-h-screen flex-col items-center  ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'} px-2 text-white md:px-28 lg:px-60 3xl:px-60`}>
-            <div className="mt-5 flex w-full items-center justify-between md:mt-10   ">
+            <div className="mt-5 flex w-full items-center justify-between md:mt-10  font-[Bembo-MT-Pro-Bold] ">
                 {page > 0 ? (
                     <button
                         type="button"
@@ -362,7 +362,7 @@ const Multistep = () => {
                         </div>
 
                         <div className="form-container w-full md:w-auto">
-                            <div className="form-body  ">{PageDisplay()}</div>
+                            <div className="form-body font-[Bembo-MT-Pro-Bold] ">{PageDisplay()}</div>
 
                             <div className="form-footer">
                                 <div className="max-md:bottom-5 2xl:bottom-10  flex w-full flex-col items-center justify-end   md:absolute md:right-20 md:flex-row lg:right-40 xl:mt-6 3xl:right-60">
