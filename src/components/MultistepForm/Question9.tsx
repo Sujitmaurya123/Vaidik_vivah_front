@@ -2,7 +2,7 @@ import React from "react";
 
 const question = [
     {
-        id: 7,
+        id: 6,
         text: "Do you believe in horoscope match?",
         summary:
             "Share whether astrological compatibility is important in your search for a life partner",

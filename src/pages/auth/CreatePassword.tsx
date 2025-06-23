@@ -1,17 +1,125 @@
+import { useState, useEffect } from "react";
+import { useSetPasswordMutation } from "../../Redux/Api/user.api";
+import Input from '../../components/input/Input.tsx';
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import {  useForm } from "react-hook-form";
+import type{ SubmitHandler} from "react-hook-form";
+
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/input/Input";
-import type { FormEvent } from "react";
+import { auth, database } from '../../../utils/firebaseConfig.ts';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { setUser } from "../../Redux/Reducers/user.reducer";
+import { useDispatch } from "react-redux";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, set } from "firebase/database";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaEyeSlash } from "react-icons/fa";
+import Cookies from 'js-cookie';
+import { LoadingOutlined } from '@ant-design/icons';
+import { z } from 'zod';
+import { toast } from 'sonner';
 
 const CreatePassword = () => {
+    const [isExclusive, setExclusive] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
+    useEffect(() => {
+        const isExclusive = localStorage.getItem("isExclusive");
+        if (isExclusive) {
+            setExclusive(true);
+        }
+    }, []);
 
-        // Optional: Add validation logic here
+    const [setPassword, { isLoading }] = useSetPasswordMutation();
 
-        navigate("/verify-otp");
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+
+    const createPasswordSchema = z.object({
+        password: z.string().min(8, "Password must be at least 8 characters long").regex(
+            passwordRegex,
+            "Password must include uppercase, lowercase, number, and special character"
+        ),
+        confirmPassword: z.string().min(8, "Password must be at least 8 characters long"),
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+    });
+
+    type CreatePasswordInputs = z.infer<typeof createPasswordSchema>;
+
+    const { register, handleSubmit, formState: { errors } } = useForm<CreatePasswordInputs>({
+        resolver: zodResolver(createPasswordSchema),
+    });
+
+    type ApiResponse = {
+        success: boolean;
+        message: string;
+        user: any;
     };
+
+    type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+        data: ApiResponse;
+    };
+
+    const onSubmit: SubmitHandler<CreatePasswordInputs> = async (data) => {
+        const email = localStorage.getItem("email");
+        const { password: confirmPassword } = data;
+        const answers = Cookies.get("answers");
+        const parsedAnswers = answers ? JSON.parse(answers) : null;
+        if (!parsedAnswers) {
+            toast.error("Failed to retrieve answers from cookies.");
+            return;
+        }
+
+        try {
+            const res = await setPassword({ password: confirmPassword, answer: parsedAnswers });
+
+            if ('error' in res && res.error) {
+                const errorData = res.error as FetchBaseQueryErrorWithData;
+                if (errorData.data?.success === false) {
+                    toast.error(errorData.data.message);
+                    return;
+                }
+            } else {
+                const successData = res.data as ApiResponse;
+                const userData = successData.user;
+
+                const userCredential = await createUserWithEmailAndPassword(auth, email!, confirmPassword!);
+                const user = userCredential.user;
+                    // console.log(email,confirmPassword);
+                localStorage.setItem("uid", user.uid);
+
+                if (user !== null) {
+                    await set(ref(database, 'users/' + user.uid), {
+                        email: userData.email,
+                        userId: userData.userId,
+                        firstName: "",
+                        lastName: "",
+                        displayName: "",
+                        profilePic: "",
+                        fcmToken: "",
+                        createdAt: new Date().toISOString(),
+                    });
+                }
+
+                localStorage.removeItem("email");
+                Cookies.remove("answers");
+                dispatch(setUser(res.data));
+                navigate("/personal-details");
+                toast.success(successData.message);
+                window.location.reload();
+            }
+        } catch (error) {
+            toast.error("An unexpected error occurred.");
+            console.error(error);
+        }
+    };
+
 
     return (
         <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-[#9e2727]`}>
@@ -38,27 +146,51 @@ const CreatePassword = () => {
             </div>
 
             <div className="w-full max-w-md px-2 py-4 mt-4">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-4 relative">
                         <Input
                             label="Enter new password"
                             placeholder="Password"
-                            type="password"
-                            className="w-full rounded-md border-2 p-2 pr-10"
+                            type={showPassword ? "text" : "password"}
+                            {...register('password')}
+                            className={`w-full rounded-md border-2 p-2 pr-10 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
                         />
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute  top-12 right-3 cursor-pointer text-gray-600"
+                        >
+                            {showPassword ? <FaEyeSlash /> : <IoEyeOutline />}
+                        </span>
+                        {errors.password && (
+                            <p className="text-orange-200 text-sm">{errors.password.message}</p>
+                        )}
                     </div>
 
                     <div className="mb-4 relative">
                         <Input
                             label="Re-enter password"
                             placeholder="Re-enter Password"
-                            type="password"
-                            className="w-full rounded-md border-2 p-2 pr-10"
+                            type={showConfirmPassword ? "text" : "password"}
+                            {...register('confirmPassword')}
+                            className={`w-full rounded-md border-2 p-2 pr-10 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
                         />
+                        <span
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            className="absolute top-12 right-3 cursor-pointer text-gray-600"
+                        >
+                            {showConfirmPassword ? <FaEyeSlash /> : <IoEyeOutline />}
+                        </span>
+                        {errors.confirmPassword && (
+                            <p className="text-orange-200 text-sm">{errors.confirmPassword.message}</p>
+                        )}
                     </div>
 
-                    <button type="submit" className="bg-white text-[#007EAF] w-full h-10 rounded-md mt-4">
-                        Create Password
+                    <button type="submit" className={`bg-white ${isExclusive ? 'text-[#8E69B4]' : 'text-[#007EAF]'} w-full h-10 rounded-md mt-4`}>
+                        {isLoading ? (
+                            <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} />
+                        ) : (
+                            "Create Password"
+                        )}
                     </button>
                 </form>
             </div>

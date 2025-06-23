@@ -2,7 +2,7 @@ import React from "react";
 
 const question = [
     {
-        id: 4,
+        id: 3,
         text: "For whom are you looking?",
         summary:
             "Specifying for whom you are looking for helps our AI algorithm & matchmaking to be more accurate and intelligent",

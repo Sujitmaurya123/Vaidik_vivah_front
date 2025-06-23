@@ -2,7 +2,7 @@ import React from "react";
 
 const question = [
     {
-        id: 8,
+        id: 7,
         text: "Does religion and caste matter for your preferred partner?",
         summary:
             "Indicating the importance of religion or caste ensures matches align with your cultural and personal values",

@@ -1,8 +1,94 @@
-import { Link } from "react-router-dom"
-import Input from "../../components/input/Input"
+
+import Input from '../../components/input/Input';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForgotpasswordMutation } from "../../Redux/Api/user.api";
+import {  useForm } from "react-hook-form";
+import type{ SubmitHandler } from "react-hook-form";
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from 'react-router-dom';
+import { toast } from 'sonner'
+import { LoadingOutlined } from '@ant-design/icons';
+import { setActivationToken } from "../../Redux/Reducers/user.reducer";
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { z } from 'zod';
+
+
+const schema = z.object({
+    email: z.string().email({ message: "Invalid email address" }),
+});
+
+type FormData = z.infer<typeof schema>;
 
 
 const ForgotPassword = () => {
+
+    const [isExclusive, setExclusive] = useState(false);
+
+
+
+
+    useEffect(() => {
+        const isExclusive = localStorage.getItem("isExclusive");
+        if (isExclusive) {
+            setExclusive(true)
+        }
+
+    })
+
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    const [forgotpassword, { isLoading }] = useForgotpasswordMutation();
+
+
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+        defaultValues: {
+            email: "",
+        },
+        resolver: zodResolver(schema),
+    });
+
+
+    type ApiResponse = {
+        success: boolean;
+        message: string;
+        activationToken?: string;
+    };
+
+    type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+        data: ApiResponse;
+    };
+
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+        try {
+            const res = await forgotpassword({ email: data.email });
+
+            console.log(data)
+
+            if ('error' in res && res.error) {
+                const errorData = res.error as FetchBaseQueryErrorWithData;
+
+                if (errorData.data?.success === false) {
+                    toast.error(errorData.data.message);
+                    return;
+                }
+            }
+            const successData = res.data as ApiResponse;
+            toast.success(successData.message);
+            dispatch(setActivationToken(successData.activationToken!));
+            navigate("/verify-otp");
+        } catch (error) {
+            toast.error("An error occurred");
+            console.log(error);
+        }
+    };
+
+
+
     return (
         <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#9e2727] `}>
             <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
@@ -27,23 +113,23 @@ const ForgotPassword = () => {
             </div>
 
             <div className="w-full max-w-md px-2  py-4 font-[Bembo-MT-Pro-Bold]">
-                <form action="" className="space-y-6 rounded-[8px]" >
+                <form action="" className="space-y-6 rounded-[8px]" onSubmit={handleSubmit(onSubmit)}>
 
                     <Input
                         label="Email"
                         type="email"
-                       
+                        {...register("email")}
                         placeholder="Enter your email"
                     />
-                    
+                    {errors.email && <p className="text-orange-200">{errors.email.message}</p>}
 
                     <button
                         type="submit"
-                        className={`w-full py-2 px-4 text-red-600 rounded bg-[#ffffff]`}
-                        
+                        className={`w-full py-2 px-4 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} rounded bg-[#ffffff]`}
+                        disabled={isSubmitting}
 
                     >
-                      Send Email
+                        {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Send Email'}
                     </button>
                 </form>
             </div>

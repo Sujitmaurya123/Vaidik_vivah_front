@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const question = [
     {
-        id: 9,
+        id: 8,
         text: "What are your interests and hobbies?",
         summary:
             "Tell us about the activities that you enjoy and are passionate about. Select all that apply",

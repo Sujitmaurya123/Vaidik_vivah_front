@@ -37,7 +37,7 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
                     </Link> */}
                     <button
                         type="button"
-                        className={`flex h-[48px] px-10  items-center justify-center gap-2 rounded-md bg-white md:px-20 py-2 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                        className={`flex h-[48px] px-10  items-center justify-center gap-2 cursor-pointer rounded-md bg-white md:px-20 py-2 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
                             } md:w-auto xl:mt-10 md:mt-0`}
                         onClick={handleNext}
                     >

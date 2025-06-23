@@ -40,7 +40,7 @@ const Question1: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
                             {question.text}
                         </p>
 
-                        <div className="relative w-full sm:w-[150px] md:w-[200px]">
+                        <div className="relative w-full sm:w-[350px] md:w-[700px]">
                             <select title="option"
                                 value={selected}
                                 onChange={(e) => handleChange(question.id, e.target.value)}

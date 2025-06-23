@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 import Welcome from "./Welcome";
 import Question1 from "./Question1";
-import Question2 from "./Question2";
+// import Question2 from "./Question2";
 // import Question3 from "./Question3";
 // import Question4 from "./Question4";
 import Question5 from "./Question5";
@@ -47,7 +47,7 @@ const Multistep = () => {
 
     const PageTitles = [
         "Question 1/11",
-        "Question 2/11",
+        // "Question 2/11",
         // "Question 3/11",
         // "Question 4/11",
         "Question 5/11",
@@ -70,13 +70,13 @@ const Multistep = () => {
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 1:
-                return (
-                    <Question2
-                        selectedOptions={selectedOptions}
-                        handleOptionChange={handleOptionChange}
-                    />
-                );
+            // case 1:
+            //     return (
+            //         <Question2
+            //             selectedOptions={selectedOptions}
+            //             handleOptionChange={handleOptionChange}
+            //         />
+            //     );
             // case 2:
             //     return (
             //         <Question3
@@ -91,21 +91,21 @@ const Multistep = () => {
             //             handleOptionChange={handleOptionChange}
             //         />
             //     );
-            case 2:
+            case 1:
                 return (
                     <Question5
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 3:
+            case 2:
                 return (
                     <Question6
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 4:
+            case 3:
                 return (
                     <Question7
                         selectedOptions={selectedOptions}
@@ -119,21 +119,21 @@ const Multistep = () => {
             //             handleOptionChange={handleOptionChange}
             //         />
             //     );
-            case 5:
+            case 4:
                 return (
                     <Question9
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 6:
+            case 5:
                 return (
                     <Question10
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
                 );
-            case 7:
+            case 6:
                 return (
                     <Question11
                         selectedOptions={selectedOptions}
@@ -188,15 +188,15 @@ const Multistep = () => {
             }
         }
 
-        if (page === 1) {
-            const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 3
-            );
-            if (!hasAnsweredAll) {
-                toast.error("Please answer Have you tried looking for your life partner online before? before proceeding!");
-                return;
-            }
-        }
+        // if (page === 1) {
+        //     const hasAnsweredAll = selectedOptions.some(
+        //         (sel) => sel.questionId === 3
+        //     );
+        //     if (!hasAnsweredAll) {
+        //         toast.error("Please answer Have you tried looking for your life partner online before? before proceeding!");
+        //         return;
+        //     }
+        // }
 
         // if (page === 2) {
         //     const hasAnsweredAll = selectedOptions.some(
@@ -217,18 +217,18 @@ const Multistep = () => {
         //         return;
         //     }
         // }
-        if (page === 2) {
+        if (page === 1) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 4
+                (sel) => sel.questionId === 3
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer For whom are you looking? before proceeding!");
                 return;
             }
         }
-        if (page === 3) {
+        if (page === 2) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 5
+                (sel) => sel.questionId === 4
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Your age  before proceeding!");
@@ -236,8 +236,8 @@ const Multistep = () => {
             }
         }
 
-        if (page === 4) { // Validation for Question 8
-            const answerValue = selectedOptions.find((sel) => sel.questionId === 6)?.answerValue;
+        if (page === 3) { // Validation for Question 8
+            const answerValue = selectedOptions.find((sel) => sel.questionId === 5)?.answerValue;
 
             if (!answerValue) {
                 toast.error("Please select both minimum and maximum age before proceeding!");
@@ -267,9 +267,9 @@ const Multistep = () => {
         //     }
         // }
 
-        if (page === 5) {
+        if (page === 4) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 7
+                (sel) => sel.questionId === 6
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Do you believe in horoscope match? before proceeding!");
@@ -277,9 +277,9 @@ const Multistep = () => {
             }
         }
 
-        if (page === 6) {
+        if (page === 5) {
             const hasAnsweredAll = selectedOptions.some(
-                (sel) => sel.questionId === 8
+                (sel) => sel.questionId === 7
             );
             if (!hasAnsweredAll) {
                 toast.error("Please answer Does religion and caste matter for your preferred partner? before proceeding!");
@@ -287,8 +287,8 @@ const Multistep = () => {
             }
         }
 
-        if (page === 7) {
-            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 9)?.answerValue;
+        if (page === 6) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 8)?.answerValue;
 
             if (!selectedAnswer || selectedAnswer.length === 0) {
                 toast.error("Please answer 'What are your interests and hobbies?' before proceeding!");
@@ -320,7 +320,7 @@ const Multistep = () => {
                 {page > 0 ? (
                     <button
                         type="button"
-                        className="h-[48px] gap-2 text-xl text-white  flex items-center "
+                        className="h-[48px] gap-2 text-xl text-white  flex items-center  cursor-pointer"
                         onClick={handlePrevious}
                     >
                         <FaArrowLeftLong />   Back
@@ -328,7 +328,7 @@ const Multistep = () => {
                 ) : (
                     <button
                         type="button"
-                        className="h-[48px] gap-2 text-xl text-white flex items-center "
+                        className="h-[48px] gap-2 text-xl text-white flex items-center  cursor-pointer"
                         onClick={() => navigate("/")}
                     >
                         <FaArrowLeftLong />   Back
@@ -370,7 +370,7 @@ const Multistep = () => {
 
                                         <button
                                             type="button"
-                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 rounded-md bg-white  px-2 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
+                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 cursor-pointer rounded-md bg-white  px-2 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
                                             onClick={handleNext}
                                         >
                                             Continue <FaArrowRightLong />

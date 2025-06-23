@@ -14,7 +14,7 @@ type SelectedOption = {
 
 const question = [
     {
-        id: 6,
+        id: 5,
         text: "I am looking for a partner of age",
         summary:
             "Specifying the age range of your ideal partner helps us connect you with individuals who match your preferences",

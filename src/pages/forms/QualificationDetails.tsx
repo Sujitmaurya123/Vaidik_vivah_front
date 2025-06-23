@@ -1,22 +1,102 @@
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useEffect, useState } from "react";
+import { useQualificationDetailsMutation } from "../../Redux/Api/form.api";
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { useNavigate } from "react-router-dom";
+import { LoadingOutlined } from '@ant-design/icons';
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from 'sonner'
+import { useGetQualificationQuery, useGetOccupationQuery, useGetIncomeQuery } from "../../Redux/Api/dropdown.api";
+
+
+// Define the Zod schema for form validation
+const qualificationDetailsSchema = z.object({
+    qualification: z.string().min(1, { message: "Qualification is required" }),
+    currentWorkingStatus: z.string().min(1, { message: "Working status is required" }),
+    occupation: z.string().min(1, { message: "Occupation is required" }),
+    income: z.string().min(1, { message: "Income is required" }),
+});
+
+type QualificationDetailsFormData = z.infer<typeof qualificationDetailsSchema>;
 
 const QualificationDetailsForm: React.FC = () => {
-    const [formData, setFormData] = useState({
-        qualification: "",
-        workingStatus: "",
-        occupation: "",
-        income: "",
+    const [isExclusive, setExclusive] = useState(false);
+    const [qualifications, setQualifications] = useState<{ id: string; value: string }[]>([]);
+    const [occupations, setOccupations] = useState<{ id: string; value: string }[]>([]);
+    const [incomes, setIncomes] = useState<{ id: string; value: string }[]>([]);
+
+
+    const { data: qualificationData, isLoading: isQualificationLoading } = useGetQualificationQuery();
+    const { data: occupationData, isLoading: isOccupationLoading } = useGetOccupationQuery();
+    const { data: incomeData, isLoading: isIncomeLoading } = useGetIncomeQuery();
+
+    useEffect(() => {
+        const isExclusive = localStorage.getItem("isExclusive");
+        if (isExclusive) {
+            setExclusive(true)
+        }
+    }, [])
+
+    // const dispatch = useDispatch();
+    const [qualificationDetails, { isLoading }] = useQualificationDetailsMutation();
+    console.log(qualifications);
+    const navigate = useNavigate();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<QualificationDetailsFormData>({
+        resolver: zodResolver(qualificationDetailsSchema),
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+
+    useEffect(() => {
+        if (qualificationData && occupationData && incomeData) {
+            setQualifications((qualificationData as any).data);
+            setOccupations((occupationData as any).data);
+            setIncomes((incomeData as any).data);
+        }
+    }, [qualificationData, occupationData, incomeData]);
+
+
+    type ApiResponse = {
+        success: boolean;
+        message: string;
+    };
+    type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+        data: ApiResponse;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Add API call or navigation logic here
+
+    const onSubmit = async (data: QualificationDetailsFormData) => {
+
+        try {
+
+            const res = await qualificationDetails(data);
+
+            if ('error' in res && res.error) {
+                const errorData = res.error as FetchBaseQueryErrorWithData;
+
+                if (errorData.data?.success === false) {
+                    console.log(errorData.data.message);
+                    toast.error(errorData.data.message);
+                    return;
+                }
+            } else {
+                const successData = res.data as ApiResponse;
+                console.log(successData);
+                // const isQualificationDetailsFormFilled = true
+                toast.success(successData.message);
+                // dispatch(setUser(isQualificationDetailsFormFilled));
+                navigate("/location-details");
+            }
+
+        } catch (error) {
+            console.log(error);
+            toast.error("An unexpected error occurred.");
+        }
     };
 
     return (
@@ -32,94 +112,116 @@ const QualificationDetailsForm: React.FC = () => {
             </div>
 
             <form
-                onSubmit={handleSubmit}
-                className="w-full max-w-2xl bg-transparent space-y-6 text-black font-[Bembo-MT-Pro-Regular]"
+                onSubmit={handleSubmit(onSubmit)}
+                className="font-[Bembo-MT-Pro-Regular] mt-5 flex flex-col md:px-20 xl:px-40 2xl:px-60 3xl:mt-20 3xl:px-60"
             >
-                {/* Highest Qualification */}
-                <div>
-                    <label className="block text-white mb-1">Highest qualification*</label>
-                    <select title="options"
-                        name="qualification"
-                        value={formData.qualification}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 rounded bg-white/90 outline-none"
-                        required
-                    >
-                        <option value="">Select your highest qualification</option>
-                        <option value="High School">High School</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="Bachelor's">Bachelor's Degree</option>
-                        <option value="Master's">Master's Degree</option>
-                        <option value="PhD">PhD</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div className="mb-2">
+                    <label className="block text-white">Highest qualification*</label>
+                    <div className="">
+                        <select
+                            {...register("qualification")}
+                            className="w-full rounded-[0.5rem] border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                        >
+
+                            <option value="" disabled selected>
+                                Select your highest qualification
+                            </option>
+                            {isQualificationLoading && <p>Loading...</p>}
+
+                            {qualifications.map((qualification) => (
+                                <option key={qualification.id} value={qualification.value}>
+                                    {qualification.value}
+                                </option>
+                            ))}
+
+                        </select>
+                        {errors.qualification && (
+                            <p className="text-orange-200 text-sm mt-1">
+                                {errors.qualification.message}
+                            </p>
+                        )}
+                    </div>
                 </div>
 
-                {/* Working Status */}
-                <div>
-                    <label className="block text-white mb-1">Current working status</label>
-                    <select title="options"
-                        name="workingStatus"
-                        value={formData.workingStatus}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 rounded bg-white/90 outline-none"
-                    >
-                        <option value="">Select your working status</option>
-                        <option value="Employed">Employed</option>
-                        <option value="Self-employed">Self-employed</option>
-                        <option value="Student">Student</option>
-                        <option value="Unemployed">Unemployed</option>
-                        <option value="Retired">Retired</option>
-                    </select>
+                <div className="mb-2">
+                    <label className="block text-white">Current working status</label>
+                    <div className="">
+                        <select
+
+                            {...register("currentWorkingStatus")}
+                            className="w-full rounded-[0.5rem] border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                        >
+                            <option value="" disabled selected>
+                                Select your working status
+                            </option>
+                            <option value={"working"}>Working</option>
+                            <option value={"selfEmployed"}>Self-employed</option>
+                            <option value={"unemployed"}>Unemployed</option>
+                            <option value={"retired"}>Retired</option>
+                            <option value="others">Others</option>
+                        </select>
+                        {errors.currentWorkingStatus && (
+                            <p className="text-orange-200 text-sm mt-1">
+                                {errors.currentWorkingStatus.message}
+                            </p>
+                        )}
+                    </div>
                 </div>
 
-                {/* Occupation */}
-                <div>
-                    <label className="block text-white mb-1">Occupation*</label>
-                    <select title="options"
-                        name="occupation"
-                        value={formData.occupation}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 rounded bg-white/90 outline-none"
-                        required
+                <div className="mb-2">
+                    <label className="block text-white">Occupation*</label>
+                    <select
+                        {...register("occupation")}
+                        className="w-full rounded-[0.5rem] border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
                     >
-                        <option value="">Select your occupation</option>
-                        <option value="Engineer">Engineer</option>
-                        <option value="Doctor">Doctor</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Lawyer">Lawyer</option>
-                        <option value="Government Employee">Government Employee</option>
-                        <option value="Business Owner">Business Owner</option>
-                        <option value="Other">Other</option>
+                        <option value="" disabled selected>
+                            Select your occupation
+                        </option>
+                        {isOccupationLoading && <p>Loading...</p>}
+                        {occupations.map((occupation) => (
+                            <option key={occupation.id} value={occupation.value}>
+                                {occupation.value}
+                            </option>
+                        ))}
                     </select>
+                    {errors.occupation && (
+                        <p className="text-orange-200 text-sm mt-1">
+                            {errors.occupation.message}
+                        </p>
+                    )}
                 </div>
 
-                {/* Income */}
-                <div>
-                    <label className="block text-white mb-1">Income*</label>
-                    <select title="option"
-                        name="income"
-                        value={formData.income}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 rounded bg-white/90 outline-none"
-                        required
+                <div className="mb-2">
+                    <label className="block text-white">Income*</label>
+                    <select
+                        {...register("income")}
+                        className="w-full rounded-[0.5rem] border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
                     >
-                        <option value="">Select your income</option>
-                        <option value="Less than ₹2 LPA">Less than ₹2 LPA</option>
-                        <option value="₹2-5 LPA">₹2-5 LPA</option>
-                        <option value="₹5-10 LPA">₹5-10 LPA</option>
-                        <option value="₹10-20 LPA">₹10-20 LPA</option>
-                        <option value="₹20+ LPA">₹20+ LPA</option>
+                        <option value="" disabled selected >
+                            Select your income
+                        </option>
+                        {isIncomeLoading && <p>Loading...</p>}
+                        {incomes.map((income) => (
+                            <option key={income.id} value={income.value}>
+                                {income.value}
+                            </option>
+                        ))}
                     </select>
+                    {errors.income && (
+                        <p className="text-orange-200 text-sm mt-1">
+                            {errors.income.message}
+                        </p>
+                    )}
                 </div>
 
-                {/* Submit */}
-                <div className="text-center pt-4">
+                <div className="mb-5 flex w-full justify-end py-8 pb-4 xl:px-10 2xl:mb-4 2xl:px-0 3xl:mb-20 3xl:px-0">
                     <button
                         type="submit"
-                        className="bg-white text-[#007EAF] font-semibold px-6 py-2 rounded hover:bg-gray-100 transition"
+                        className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}
+          md:w-20 2xl:w-32`}
                     >
-                        Save
+                        {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Save'}
+
                     </button>
                 </div>
             </form>

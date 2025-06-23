@@ -1,18 +1,88 @@
-import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/input/Input";
-import type { FormEvent } from "react";
+import { useState, useEffect } from 'react';
+import Input from '../../components/input/Input';
+import { useRegisterUserMutation } from "../../Redux/Api/user.api";
+import { setActivationToken } from "../../Redux/Reducers/user.reducer";
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { useDispatch } from "react-redux";
+import {  useForm } from "react-hook-form";
+import type{ SubmitHandler } from "react-hook-form";
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from 'react-router-dom';
+import { LoadingOutlined } from '@ant-design/icons';
+import { useNavigate } from "react-router-dom";
+import { toast } from 'sonner'
+import { z } from 'zod';
+
+
+
+
+const schema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+});
+type FormData = z.infer<typeof schema>;
 
 const Register = () => {
+  const [isExclusive, setExclusive] = useState(false);
+
+  useEffect(() => {
+    const isExclusive = localStorage.getItem("isExclusive");
+    if (isExclusive) {
+      setExclusive(true)
+    }
+
+  })
+
+
+
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
 
-    // You can add form validation or async API call here
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+    },
+    resolver: zodResolver(schema),
+  });
 
-    navigate("/create-password"); // redirect after successful "submission"
+
+  type ApiResponse = {
+    success: boolean;
+    message: string;
+    activationToken?: string;
   };
+
+  type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+    data: ApiResponse;
+  };
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+
+      localStorage.setItem("email", data.email);
+      const res = await registerUser({ email: data.email });
+
+      if ('error' in res && res.error) {
+        const errorData = res.error as FetchBaseQueryErrorWithData;
+
+        if (errorData.data?.success === false) {
+          toast.error(errorData.data.message);
+          return;
+        }
+      }
+      const successData = res.data as ApiResponse;
+      toast.success(successData.message);
+      dispatch(setActivationToken(successData.activationToken!));
+      navigate("/verification");
+    } catch (error) {
+      toast.error("An error occurred");
+      console.log(error);
+    }
+  };
+
 
   return (
     <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#9e2727]`}>
@@ -36,18 +106,22 @@ const Register = () => {
       </div>
 
       <div className="w-full max-w-md px-2 py-4">
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Email"
             type="email"
+            {...register("email")}
             placeholder="Enter your email"
           />
+          {errors.email && <p className="text-orange-200">{errors.email.message}</p>}
+            
 
           <button
             type="submit"
-            className="w-full py-2 px-4 rounded bg-[#ffffff]"
+            className={`w-full py-2 px-4 ${isExclusive ? 'text-[#8E69B4]' : 'text-[#60457E]'} rounded bg-[#ffffff]`}
+            disabled={isSubmitting}
           >
-            Submit
+            {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : '         Create an account'}
           </button>
         </form>
       </div>

@@ -40,20 +40,20 @@ const Navbar: React.FC = () => {
             <img
               src="/logotest3.png"
               alt="logo"
-              className="h-24 w-auto md:h-24"
+              className="h-24 w-auto md:h-24 ml-3"
             />
           </Link>
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-4 font-[Bembo-MT-Pro-Regular]">
             <Link to="/questions">
-              <button className="text-white bg-[#9e2727]  px-6 py-2 rounded-full  cursor-pointer transition">
+              <button className="text-white bg-[#FD5C90]  px-6 py-2 rounded-full  cursor-pointer transition">
                 Register
               </button>
             </Link>
             
               <button onClick={() => setModalOpen(true)}
-               className="text-white bg-[#9e2727]  px-6 py-2 rounded-full cursor-pointer transition">
+              className="text-white bg-[#FD5C90]  px-6 py-2 rounded-full cursor-pointer transition">
                 Login
               </button>
            

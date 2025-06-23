@@ -1,27 +1,131 @@
-import React, { useState } from 'react';
+import "../../font.css";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useOtherDetailsMutation } from "../..//Redux/Api/form.api";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setUser } from "../../Redux/Reducers/user.reducer";
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { useNavigate } from "react-router-dom";
+import { toast } from 'sonner'
+import { LoadingOutlined } from '@ant-design/icons';
+import { useGetReligionQuery, useGetCommunityQuery, useGetCasteQuery } from "../../Redux/Api/dropdown.api";
 
-const religions = ['Hindu', 'Muslim', 'Christian', 'Sikh', 'Other'];
-const communities = ['Brahmin', 'Rajput', 'Kayastha', 'Yadav', 'Other'];
-const castes = ['General', 'OBC', 'SC', 'ST'];
+
+
+// caste, community, dateOfBirth, timeOfBirth, religion, placeOfBirth
+
+const otherDetailsSchema = z.object({
+    caste: z.string().min(1, "Caste is required"),
+    community: z.string().min(1, "Community is required"),
+    dateOfBirth: z.string().min(1, "Date of Birth is required"),
+    timeOfBirth: z.string().min(1, "Time of Birth is required"),
+    religion: z.string().min(1, "Religion is required"),
+    placeOfBirth: z.string().min(1, "Place of Birth is required"),
+});
 
 const OtherDetails: React.FC = () => {
-    const [form, setForm] = useState({
-        religion: '',
-        community: '',
-        dob: '',
-        tob: '',
-        caste: '',
-        pob: '',
+    const [isExclusive, setExclusive] = useState(false);
+    // const [selectedReligion, setSelectedReligion] = useState("");
+    // const [availableCastes, setAvailableCastes] = useState<{ id: string; name: string }[]>([]);
+
+    const [religion, setSelectedReligionData] = useState<{ id: string; value: string }[]>([]);
+    const [community, setSelectedCommunityData] = useState<{ id: string; value: string }[]>([]);
+    const [caste, setSelectedCasteData] = useState<{ id: string; value: string }[]>([]);
+
+
+    const { data: religiondata } = useGetReligionQuery();
+    const { data: communitydata } = useGetCommunityQuery();
+    const { data: castedata } = useGetCasteQuery();
+
+
+
+
+    useEffect(() => {
+        const isExclusive = localStorage.getItem("isExclusive");
+        if (isExclusive) {
+            setExclusive(true)
+        }
+    }, [])
+
+
+    useEffect(() => {
+        if (religiondata) {
+            setSelectedReligionData((religiondata as any).data);
+        }
+
+        if (communitydata) {
+            setSelectedCommunityData((communitydata as any).data);
+        }
+
+        if (castedata) {
+            setSelectedCasteData((castedata as any).data);
+        }
+
+
+
+    }, [religiondata, communitydata, castedata]);
+
+
+
+
+
+
+
+
+    const [otherDetails, { isLoading }] = useOtherDetailsMutation();
+    const navigate = useNavigate();
+
+    // const dispatch = useDispatch();
+
+
+
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(otherDetailsSchema),
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setForm(prev => ({ ...prev, [name]: value }));
+
+    type ApiResponse = {
+        success: boolean;
+        message: string;
+    };
+    type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+        data: ApiResponse;
     };
 
-    const handleSubmit = () => {
-        console.log('Form Submitted:', form);
-        // You can send `form` data to backend here
+
+    const onSubmit = async (data: any) => {
+        try {
+
+            const res = await otherDetails(data);
+
+            if ('error' in res && res.error) {
+                const errorData = res.error as FetchBaseQueryErrorWithData;
+
+                if (errorData.data?.success === false) {
+                    console.log(errorData.data.message);
+                    toast.error(errorData.data.message);
+                    return;
+                }
+            } else {
+
+                const successData = res.data as ApiResponse;
+                toast.success(successData.message);
+                navigate('/success');
+            }
+
+        } catch (error) {
+            console.log(error);
+            toast.error("An unexpected error occurred");
+
+        }
+        console.log(data);
     };
 
     return (
@@ -35,95 +139,153 @@ const OtherDetails: React.FC = () => {
                     Including additional details enriches your profile, making it easier to find meaningful and compatible connections
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-[Bembo-MT-Pro-Bold]">
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="font-[Bembo-MT-Pro-Regular] mt-5 grid grid-cols-1 md:grid-cols-2 md:gap-2 md:px-20 xl:px-40 2xl:px-60 3xl:mt-20 3xl:px-60"
+                >
                     <div>
-                        <label className="block mb-1">Religion</label>
-                        <select title='option'
-                            name="religion"
-                            value={form.religion}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
+                        <label className="block text-white">Religion</label>
+                        <div className="mb-4">
+                            <select
+                                {...register("religion")}
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                                defaultValue={""}
+                            >
+                                <option value="" disabled>
+                                    Select Religion
+                                </option>
+                                {
+                                    religion.map((religion) => (
+                                        <option value={religion.value} key={religion.id} >
+                                            {religion.value}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                            {errors.religion && (
+                                <span className="text-orange-200">
+                                    {errors.religion.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white">Community</label>
+                        <div className="mb-4 ">
+                            <select
+                                {...register("community")}
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                            >
+                                <option value="" disabled selected>
+                                    Select Community
+                                </option>
+                                {community.map((community) => (
+                                    <option value={community.value} key={community.id}>
+                                        {community.value}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.community && (
+                                <span className="text-orange-200">
+                                    {errors.community.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white">Date of Birth</label>
+                        <div className="mb-4">
+                            <input
+                                type="date"
+                                {...register("dateOfBirth")}
+                                placeholder="Date"
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                                max={new Date().toISOString().split("T")[0]}
+                            />
+                            {errors.dateOfBirth && (
+                                <span className="text-orange-200">
+                                    {errors.dateOfBirth.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white">Time of Birth</label>
+                        <div className="mb-4">
+                            <input
+                                type="time"
+                                {...register("timeOfBirth")}
+                                placeholder="Time"
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                            />
+                            {errors.timeOfBirth && (
+                                <span className="text-orange-200">
+                                    {errors.timeOfBirth.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+
+
+                    <div>
+                        <label className="block text-white">Caste</label>
+                        <div className="mb-4">
+                            <select
+                                {...register("caste")}
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                                defaultValue={""}
+                            >
+                                <option value="" disabled>
+                                    Select caste
+                                </option>
+                                {caste.map((caste) => (
+                                    <option value={caste.value} key={caste.id}>
+                                        {caste.value}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.caste && (
+                                <span className="text-orange-200">
+                                    {errors.caste.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+
+
+                    <div>
+                        <label className="block text-white">Place of Birth</label>
+                        <div className="mb-4">
+                            <input
+                                type="text"
+                                {...register("placeOfBirth")}
+                                placeholder="Enter your place of birth"
+                                className="h-10 w-full rounded border bg-[#F9F5FFE5] p-2 text-[#838E9E]"
+                            />
+                            {errors.placeOfBirth && (
+                                <span className="text-orange-200">
+                                    {errors.placeOfBirth.message?.toString()}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div className="md:col-span-2 flex justify-end mb-5">
+                        <button
+                            type="submit"
+                            className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}
+              md:w-20 2xl:w-32`}
                         >
-                            <option value="">Select Religion</option>
-                            {religions.map(rel => (
-                                <option key={rel} value={rel}>{rel}</option>
-                            ))}
-                        </select>
+                            {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Save'}
+                        </button>
                     </div>
-
-                    <div>
-                        <label className="block mb-1">Community</label>
-                        <select title='option'
-                            name="community"
-                            value={form.community}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
-                        >
-                            <option value="">Select Community</option>
-                            {communities.map(com => (
-                                <option key={com} value={com}>{com}</option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label className="block mb-1">Date of Birth</label>
-                        <input title='option'
-                            type="date"
-                            name="dob"
-                            value={form.dob}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block mb-1">Time of Birth</label>
-                        <input title='option'
-                            type="time"
-                            name="tob"
-                            value={form.tob}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block mb-1">Caste</label>
-                        <select title='option'
-                            name="caste"
-                            value={form.caste}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
-                        >
-                            <option value="">Select caste</option>
-                            {castes.map(cas => (
-                                <option key={cas} value={cas}>{cas}</option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label className="block mb-1">Place of Birth</label>
-                        <input
-                            type="text"
-                            name="pob"
-                            placeholder="Enter your place of birth"
-                            value={form.pob}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-100 text-gray-700"
-                        />
-                    </div>
-                </div>
-
-                <div className="mt-6 flex justify-center font-[Bembo-MT-Pro-Bold]">
-                    <button
-                        onClick={handleSubmit}
-                        className="bg-white text-blue-600 px-6 py-2 rounded hover:bg-gray-100 "
-                    >
-                        Save
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
     );
