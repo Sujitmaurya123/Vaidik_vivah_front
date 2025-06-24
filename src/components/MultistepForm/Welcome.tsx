@@ -15,8 +15,7 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
 
     return (
         <div
-            className={`min-w-screen relative  flex-col ${isExclusive ? "bg-[#9e2727]" : "bg-[#9e2727]"
-                } px-2 text-white md:px-28 lg:px-40 3xl:px-60`}
+            className={`min-w-6xl rounded-3xl bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] relative  flex-col  px-2 text-white md:px-28 lg:px-40 3xl:px-60`}
         >
 
             {/* Main Content */}
@@ -37,8 +36,8 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
                     </Link> */}
                     <button
                         type="button"
-                        className={`flex h-[48px] px-10  items-center justify-center gap-2 cursor-pointer rounded-md bg-white md:px-20 py-2 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
-                            } md:w-auto xl:mt-10 md:mt-0`}
+                        className={`flex h-[48px] px-10  items-center justify-center gap-2 cursor-pointer rounded-md bg-white  md:px-20 py-2 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                            } md:w-auto xl:mt-10 md:mt-0 mb-4`}
                         onClick={handleNext}
                     >
                         Click to continue

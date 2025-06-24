@@ -98,12 +98,17 @@ const Verification = () => {
     };
 
   return (
-      <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-[#9e2727] `}>
+      <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-[#ffffff] `}>
           <div className="flex items-center justify-center mb-14">
               <Link to={"/"} className='fixed top-4'>
-                  <img src="/logotest3.png" alt="" className='w-72 h-24 ' />
+                  <img
+                      src="/logotest3.png"
+                      alt="logo"
+                      className="h-24 w-auto md:h-24 ml-3"
+                  />
               </Link>
           </div>
+          <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
           <div className="flex flex-col items-center justify-center mt-8 mb-2">
               <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
                   <img src="/lock.png" alt="Star" className='w-8 h-8' />
@@ -125,7 +130,7 @@ const Verification = () => {
                                   <Input
                                       label=""
                                       {...register(fieldNames[index])}
-                                      ref={(el )=> {inputRefs.current[index] = el}} // Assign ref to input
+                                      ref={(el) => {inputRefs.current[index] = el}} // Assign ref to input
                                       className={`w-16 h-16 text-center rounded-xl text-3xl text-[#007EAF] placeholder-[#007EAF] outline-gray-400 ${errors[fieldNames[index]] ? 'border-red-500' : ''}`}
                                       type="text"
                                       inputMode="numeric"
@@ -150,8 +155,8 @@ const Verification = () => {
             {
               registerationLoading ? <LoadingOutlined className={`${isExclusive? 'text-[#60457E]': 'text-[#007EAF]'} animate-spin`} /> : */}
 
-                      <button className={`bg-white ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}  w-full h-12 rounded-xl mt-6`}>
-                          {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Verify'}
+                          <button className={`bg-white ${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'}  w-full h-12 rounded-xl mt-6`}>
+                              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'} animate-spin cursor-pointer `} /> : 'Verify'}
                       </button>
 
                       {/* } */}
@@ -159,6 +164,7 @@ const Verification = () => {
 
                   </form>
               </div>
+          </div>
           </div>
       </div>
   )

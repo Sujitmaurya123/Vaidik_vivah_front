@@ -348,13 +348,13 @@ const MyDetails = () => {
 
     return (
 
-        <div>
+        <div className="">
             {isLoading || isprofileDataLoading ? (
                 <div className="flex items-center justify-center">
                     <Loading />
                 </div>
             ) : (
-                <div className="min-w-screen flex min-h-screen flex-col gap-4 md:gap-10 lg:flex-row">
+                <div className="min-w-screen flex min-h-screen flex-col gap-4 md:gap-10 lg:flex-row ">
                     <div className="mb-4 space-y-5 lg:grid grid-cols-1 gap-5  md:mb-0 h-full  auto-rows-[10rem] ">
                         {myDetails?.profileImage.map(
                             (imageUrl: string, index: number) => (
@@ -369,12 +369,12 @@ const MyDetails = () => {
                     </div>
 
                     <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-                            <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ac7c85] p-6 md:col-span-2   md:w-auto  xl:h-[29rem]">
+                            <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[29rem]">
                             <div className="flex w-full flex-col  items-center justify-between gap-10 xl:flex-row">
                                 <div className=" xl:w-[70%] w-full ">
-                                    <div className="flex items-center justify-between self-start  text-xl font-semibold leading-5 text-white">
+                                    <div className="flex items-center justify-between self-start  text-xl font-semibold leading-5 text-gray-800">
                                         Basic & Lifestyle
-                                        <div className="flex gap-4 text-white">
+                                        <div className="flex gap-4 text-gray-800">
                                             {/* <button
                       className="w-2 text-2xl"
                       onClick={openLifestyleModel}
@@ -392,8 +392,8 @@ const MyDetails = () => {
                                         </div>
                                     </div>
 
-                                    <div className="mt-2.5 flex flex-wrap py-6 items-center gap-2.5 self-start text-base font-medium  leading-4 text-slate-900">
-                                        <div className={`self-stretch text-xl font-bold leading-10 ${isExclusive ? 'text-[#60457E]' : 'text-[white]'} lg:text-3xl`}>
+                                    <div className="mt-2.5  flex flex-wrap py-6 items-center gap-2.5 self-start text-base font-medium  leading-4 text-slate-900">
+                                            <div className={`self-stretch text-xl font-bold leading-10 ${isExclusive ? 'text-[#60457E]' : 'text-slate-900'} lg:text-3xl`}>
                                             {`${capitalize(myDetails?.basic_and_lifestyle?.firstName)} ${capitalize(myDetails?.basic_and_lifestyle?.lastName)}`}
                                         </div>
                                         <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
@@ -403,7 +403,7 @@ const MyDetails = () => {
                                             {myDetails?.basic_and_lifestyle?.age}
                                         </div>
                                     </div>
-                                        <div className="mt-6 flex flex-col rounded-xl bg-[#a44949] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
+                                        <div className="mt-6 flex flex-col rounded-xl bg-[#fa4e85] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
                                         <div className="text-base font-bold leading-6 tracking-wide text-white text-opacity-90 max-md:max-w-full">
                                             About{" "}
                                             {myDetails?.basic_and_lifestyle?.firstName +
@@ -416,16 +416,16 @@ const MyDetails = () => {
                                     </div>
                                     <div className="mt-4 flex flex-col px-2 max-md:max-w-full max-md:px-5 gap-3">
                                         <div className="flex justify-between gap-0 max-md:flex-wrap">
-                                            <div className="flex-1 text-lg leading-8 tracking-wide text-white text-opacity-90 max-md:max-w-full">
+                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
                                                 Religion
                                             </div>
-                                            <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-blue-600">
+                                                <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-[#fa4e85]">
                                                 {myDetails?.basic_and_lifestyle?.religion}
                                             </div>
                                         </div>
 
                                         <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-                                            <div className="flex-1 text-lg leading-8 tracking-wide text-white text-opacity-90 max-md:max-w-full">
+                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
                                                 Marital status
                                             </div>
                                             <div className="justify-center self-start rounded-[100px] bg-orange-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-slate-900">
@@ -434,7 +434,7 @@ const MyDetails = () => {
                                         </div>
 
                                         <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-                                            <div className="flex-1 text-lg leading-8 tracking-wide text-white text-opacity-90 max-md:max-w-full">
+                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
                                                 Posted by{" "}
                                             </div>
                                             <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
@@ -443,7 +443,7 @@ const MyDetails = () => {
                                         </div>
                                     </div>
                                 </div>
-                                    <div className="h-[28rem] xl:w-[30%]  w-auto rounded-lg bg-[#798897] text-white  md:p-5 md:h-[26rem]">
+                                    <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fa4e85] text-white  md:p-5 md:h-[26rem]">
                                         <h2 className="font-[Bembo-MT-Pro-Bold] text-xl md:text-2xl text-center mt-2 md:text-start">Complete your profile</h2>
                                     <div className="flex flex-col items-center justify-center p-5 ">
                                         <Gauge
@@ -461,7 +461,7 @@ const MyDetails = () => {
                                                     fontWeight: 'bold',
                                                 },
                                                 [`& .${gaugeClasses.valueArc}`]: {
-                                                    fill: `${isExclusive ? '#60457E' : '#a44949'}`,
+                                                    fill: `${isExclusive ? '#60457E' : '#d70d4d'}`,
                                                 },
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
@@ -489,7 +489,7 @@ const MyDetails = () => {
                         <div className="w-75% mb-4  xl:mb-0 flex flex-col rounded-xl bg-white md:w-auto h-[17rem]">
                             {/* <div className="flex flex-col pb-6 bg-white rounded-xl shadow-sm max-md:max-w-full"> */}
                             <div
-                                className={`w-full justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:max-w-full max-md:px-5 md:text-xl`}
+                                    className={`w-full justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:max-w-full max-md:px-5 md:text-xl`}
                                 style={{ fontFamily: "Proxima-Nova-Bold, sans-serif" }}
                             >
                                 <div className="flex items-center justify-between">
@@ -503,9 +503,9 @@ const MyDetails = () => {
                                             onClose={closeFamilyModel}
                                         />
 
-                                        <div>
+                                            <div >
 
-                                            <Switch checked={isFamilyDetails} onChange={ToggleFamilyDetails} disabled={isToggleLoading} />
+                                                <Switch checked={isFamilyDetails} onChange={ToggleFamilyDetails} disabled={isToggleLoading} className="custom-switch" />
                                         </div>
                                     </div>
                                 </div>
@@ -515,7 +515,7 @@ const MyDetails = () => {
                                     <div className="text-md flex-1 font-normal leading-8 tracking-wide text-slate-600 md:text-xl">
                                         Father occupation
                                     </div>
-                                    <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-blue-600">
+                                        <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-[#fa4e85]">
                                         {myDetails?.family_details?.fatherOccupation}
                                     </div>
                                 </div>
@@ -548,10 +548,10 @@ const MyDetails = () => {
                         </div>
                         {/* Personal Background */}
 
-                        <div className="row-span-3 lg:row-span-3 mb-4  xl:mb-0 rounded-xl bg-white ">
+                        <div className="row-span-3 lg:row-span-3 mb-4  xl:mb-0 rounded-xl bg-white mr-8">
                             <div className="flex flex-col rounded-xl bg-white pb-6 shadow-sm">
                                 <div
-                                    className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:px-5 md:text-xl`}
+                                        className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:px-5 md:text-xl`}
                                     style={{ fontFamily: "Proxima-Nova-Bold, sans-serif" }}
                                 >
                                     <div className="flex items-center justify-between">
@@ -568,47 +568,47 @@ const MyDetails = () => {
                                                 onClose={closePersonalBagroundModal}
                                             />
                                             <div>
-                                                <Switch checked={isPersonalDetails} onChange={TogglePersonalDetails} disabled={isToggleLoading} />
+                                                    <Switch checked={isPersonalDetails} onChange={TogglePersonalDetails} disabled={isToggleLoading} className="custom-switch"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="mt-6 flex flex-col px-6 max-md:px-5 xl:gap-3 ">
                                     <div className="flex items-center gap-1 whitespace-nowrap">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <CiMap />
                                         </div>
                                         <div className="text-lg leading-8 text-slate-600 md:text-xl">
                                             Height
                                         </div>
                                     </div>
-                                    <div className={`text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:ml-2.5 md:text-md`}>
+                                        <div className={`text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:ml-2.5 md:text-md`}>
                                         {myDetails?.personal_background?.height}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1 whitespace-nowrap">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <CiMap />
                                         </div>
                                         <div className="text-lg leading-8 tracking-wide text-slate-600 md:text-xl">
                                             Weight
                                         </div>
                                     </div>
-                                    <div className={`text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:ml-2.5 md:text-md`}>
+                                        <div className={`text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:ml-2.5 md:text-md`}>
                                         {myDetails?.personal_background?.weight}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <CiMap />
                                         </div>
                                         <div className="text-lg leading-8 tracking-wide text-slate-600 md:text-xl">
                                             Body Type
                                         </div>
                                     </div>
-                                    <div className={`text-md ml-8 mt-2 flex justify-center gap-1.5 self-start rounded-[100px] border border-solid border-gray-200 bg-blue-50 bg-opacity-50 px-5 py-2 font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:ml-2.5 md:py-4 md:text-md`}>
+                                        <div className={`text-md ml-8 mt-2 flex justify-center gap-1.5 self-start rounded-[100px] border border-solid border-gray-200 bg-blue-50 bg-opacity-50 px-5 py-2 font-medium capitalize leading-7 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:ml-2.5 md:py-4 md:text-md`}>
                                         {myDetails?.personal_background?.bodyType}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1 whitespace-nowrap text-xl leading-8 tracking-wide text-slate-600">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <IoLanguage />
                                         </div>
 
@@ -620,7 +620,7 @@ const MyDetails = () => {
                                         {myDetails?.personal_background?.language}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1 text-xl leading-8 tracking-wide text-slate-600">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             {" "}
                                             <FaSmoking />
                                         </div>
@@ -633,7 +633,7 @@ const MyDetails = () => {
                                         {myDetails?.personal_background?.smokingHabbit}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1 text-xl leading-8 tracking-wide text-slate-600">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             {" "}
                                             <FaWineGlassAlt />{" "}
                                         </div>
@@ -647,7 +647,7 @@ const MyDetails = () => {
                                         {myDetails?.personal_background?.drinkingHabbit}
                                     </div>
                                     <div className="mt-6 flex items-center gap-1 whitespace-nowrap">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <CiMap />
                                         </div>
                                         <div className="text-lg leading-8 tracking-wide text-slate-600 md:text-xl">
@@ -658,7 +658,7 @@ const MyDetails = () => {
                                         {myDetails?.personal_background?.diet}
                                     </div>
                                     <div className="mt-6 flex items-center gap-2 whitespace-nowrap">
-                                        <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-3xl`}>
+                                            <div className={`text-xl leading-8 ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} md:text-3xl`}>
                                             <CiMap />
                                         </div>
                                         <div className="text-lg leading-8 tracking-wide text-slate-600 md:text-xl">
@@ -676,7 +676,7 @@ const MyDetails = () => {
                         <div className="h-[31rem] md:h-[28rem] mb-4 xl:mb-0 rounded-xl bg-white">
                             <div className="flex h-[28rem] flex-col rounded-xl bg-white pb-6 shadow-sm max-md:max-w-full">
                                 <div
-                                    className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:max-w-full max-md:px-5 md:text-xl`}
+                                        className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:max-w-full max-md:px-5 md:text-xl`}
                                     style={{ fontFamily: "Proxima-Nova-Bold, sans-serif" }}
                                 >
                                     <div className="flex items-center justify-between">
@@ -694,7 +694,7 @@ const MyDetails = () => {
                                             />
 
                                             <div>
-                                                <Switch checked={isReligiousDetails} onChange={ToggleReligiousDetails} disabled={isToggleLoading} />
+                                                <Switch checked={isReligiousDetails} onChange={ToggleReligiousDetails} disabled={isToggleLoading} className="custom-switch" />
                                             </div>
                                         </div>
                                     </div>
@@ -704,7 +704,7 @@ const MyDetails = () => {
                                         <div className="text-md flex-1 font-normal leading-8 tracking-wide text-slate-600 md:text-xl">
                                             Religion
                                         </div>
-                                        <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-blue-600">
+                                            <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-[#fa4e85]">
                                             {myDetails?.religious_background?.religion}
                                         </div>
                                     </div>
@@ -777,7 +777,7 @@ const MyDetails = () => {
 
                         <div className="h-auto py-4  rounded-xl mb-4 xl:mb-0 bg-white">
                             <div
-                                className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:max-w-full max-md:px-5 md:text-xl`}
+                                    className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:max-w-full max-md:px-5 md:text-xl`}
                                 style={{ fontFamily: "Proxima-Nova-Bold, sans-serif" }}
                             >
                                 <div className="flex items-center justify-between">
@@ -794,7 +794,7 @@ const MyDetails = () => {
                                             onClose={closeLocationBackgroundModal}
                                         />
                                         <div>
-                                            <Switch checked={isLocationBackground} onChange={ToggleLocationBackground} disabled={isToggleLoading} />
+                                            <Switch checked={isLocationBackground} onChange={ToggleLocationBackground} disabled={isToggleLoading} className="custom-switch" />
                                         </div>
                                     </div>
                                 </div>
@@ -805,7 +805,7 @@ const MyDetails = () => {
                                     <div className="text-md flex-1 font-normal leading-8 tracking-wide text-slate-600 md:text-xl">
                                         Country
                                     </div>
-                                    <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-blue-600">
+                                        <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-[#fa4e85]">
                                         {myDetails?.location_background?.country}
                                     </div>
                                 </div>
@@ -825,7 +825,7 @@ const MyDetails = () => {
                                     <div className="text-md flex-1 font-normal leading-8 tracking-wide text-slate-600 md:text-xl">
                                         Current location
                                     </div>
-                                    <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-blue-600">
+                                        <div className="justify-center self-start whitespace-nowrap rounded-[100px] bg-blue-50 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-[#fa4e85]">
                                         {myDetails?.location_background?.currentLocation}
                                     </div>
 
@@ -869,7 +869,7 @@ const MyDetails = () => {
                         {/* Interest and hobbies */}
                         <div className="h-auto py-4 rounded-xl">
                             <div className=" flex max-w-[499px] flex-col pb-9 leading-8 text-slate-900">
-                                <div className={`flex items-center justify-between text-lg font-semibold leading-[110%] ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:text-xl`}>
+                                    <div className={`flex items-center justify-between text-lg font-semibold leading-[110%] ${isExclusive ? 'text-[#fa4e85]' : 'text-[#fa4e85]'} md:text-xl`}>
                                     Interest and hobbies
                                     {/* <div className="flex gap-4 ${isExclusive? 'text-[#60457E]': 'text-[#007EAF]'}">
                   <button
@@ -915,10 +915,10 @@ const MyDetails = () => {
                         </div>
 
                         {/* education and finacial */}
-                        <div className="h-auto  rounded-xl bg-white">
+                        <div className="h-auto  rounded-xl bg-white mr-8">
                             <div className="flex flex-col rounded-xl border border-solid border-gray-200 bg-white pb-6 shadow-sm">
                                 <div
-                                    className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} max-md:px-5 md:text-xl`}
+                                        className={`justify-center border-b border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide ${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'} max-md:px-5 md:text-xl`}
                                     style={{ fontFamily: "Proxima-Nova-Bold, sans-serif" }}
                                 >
                                     <div className="flex items-center justify-between">
@@ -936,7 +936,7 @@ const MyDetails = () => {
                                             />
 
                                             <div>
-                                                <Switch checked={isEducationFinancial} onChange={ToggleEducationFinancial} disabled={isToggleLoading} />
+                                                <Switch checked={isEducationFinancial} onChange={ToggleEducationFinancial} disabled={isToggleLoading} className="custom-switch" />
                                             </div>
                                         </div>
                                     </div>
@@ -944,7 +944,7 @@ const MyDetails = () => {
                                 <div className="mt-6 flex flex-col px-6 max-md:px-5">
                                     <div className="flex justify-between gap-2 whitespace-nowrap pr-8 max-md:pr-5">
                                         <div className="text-md flex items-center justify-between gap-2 self-start leading-8 tracking-wide text-slate-600 md:text-xl">
-                                            <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}`}>
+                                                <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'}`}>
                                                 <FaUserGraduate />
                                             </span>
                                             <div>Qualification</div>
@@ -956,7 +956,7 @@ const MyDetails = () => {
 
                                     <div className="mt-4 flex justify-between gap-2 whitespace-nowrap pr-8 max-md:pr-5">
                                         <div className="text-md flex items-center justify-between gap-2 self-start leading-8 tracking-wide text-slate-600 md:text-xl">
-                                            <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}`}>
+                                                <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'}`}>
                                                 <FaUserGraduate />
                                             </span>
                                             <div>Occupation</div>
@@ -968,7 +968,7 @@ const MyDetails = () => {
 
                                     <div className="mt-4 flex justify-between gap-2 whitespace-nowrap pr-8 max-md:pr-5">
                                         <div className="text-md flex items-center justify-between gap-2 self-start leading-8 tracking-wide text-slate-600 md:text-xl">
-                                            <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}`}>
+                                                <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'}`}>
                                                 <FaUserGraduate />
                                             </span>
                                             <div>Working Status</div>
@@ -980,7 +980,7 @@ const MyDetails = () => {
 
                                     <div className="mt-4 flex justify-between gap-2 pr-8 max-md:pr-5">
                                         <div className="text-md flex items-center justify-around gap-2 self-start whitespace-nowrap leading-8 tracking-wide text-slate-600 md:text-xl">
-                                            <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}`}>
+                                                <span className={`${isExclusive ? 'text-[#60457E]' : 'text-[#fa4e85]'}`}>
                                                 <FaUserGraduate />
                                             </span>
                                             <div>Income</div>

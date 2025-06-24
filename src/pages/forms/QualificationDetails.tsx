@@ -100,11 +100,17 @@ const QualificationDetailsForm: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#9e2727] flex flex-col items-center justify-center px-4 py-10">
-            <div className="w-full max-w-2xl text-center text-white mb-10">
+        <div className="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center px-4 py-10">
                 <div className="flex  justify-center">
-                    <img src="/logotest3.png" alt="Logo" className="w-72 h-24 " />
+                    <img
+                        src="/logotest3.png"
+                        alt="logo"
+                        className="h-24 w-auto md:h-24 ml-3"
+                    />
                 </div>
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
+            <div className="w-full max-w-4xl text-center text-white mb-10">
                 <h2 className="text-3xl  mb-2 font-[Bembo-MT-Pro-Bold]">Your Qualification details</h2>
                 <p className="text-sm font-[Bembo-MT-Pro-Light]">
                     Sharing your qualifications allows us to match you with individuals who align with your educational and career aspirations
@@ -225,6 +231,7 @@ const QualificationDetailsForm: React.FC = () => {
                     </button>
                 </div>
             </form>
+            </div>
         </div>
     );
 };

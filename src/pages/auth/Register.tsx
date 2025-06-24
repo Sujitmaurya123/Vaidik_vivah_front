@@ -85,15 +85,22 @@ const Register = () => {
 
 
   return (
-    <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#9e2727]`}>
+    <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#fffff]`}>
+      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
+    
       <div className="flex items-center justify-center mb-14">
         <Link to={"/"} className="mx-auto mb-2 fixed top-10">
-          <img src="/logotest3.png" alt="Logo" className="w-72 h-24" />
+          <img
+            src="/logotest3.png"
+            alt="logo"
+            className="h-24 w-auto md:h-24 ml-3"
+          />
         </Link>
       </div>
 
-      <div className="flex flex-col items-center justify-center mt-8 mb-2">
-        <div className="bg-white flex items-center justify-center rounded-md w-10 h-10">
+      <div className="flex flex-col items-center justify-center mt-8 mb-2  ">
+        <div className=" flex items-center justify-center rounded-md w-10 h-10">
           <img src="/star.png" alt="Star" />
         </div>
         <div className="flex flex-col items-center justify-center text-white mt-4 text-center">
@@ -105,7 +112,7 @@ const Register = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-md px-2 py-4">
+      <div className="w-full  px-2 py-4 flex justify-center">
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Email"
@@ -124,6 +131,7 @@ const Register = () => {
             {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : '         Create an account'}
           </button>
         </form>
+      </div>
       </div>
     </div>
   );

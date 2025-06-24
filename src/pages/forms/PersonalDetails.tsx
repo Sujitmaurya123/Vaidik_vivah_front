@@ -113,11 +113,17 @@ const PersonalDetails: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#9e2727] flex flex-col items-center justify-center px-4 py-10">
-            <div className="w-full max-w-2xl bg-transparent text-white text-center mb-8">
+        <div className="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center px-4 py-10">
                <div className="flex  justify-center">
-                    <img src="/logotest3.png" alt="Logo" className="w-72 h-24 " />
+                    <img
+                        src="/logotest3.png"
+                        alt="logo"
+                        className="h-24 w-auto md:h-24 ml-3"
+                    />
                </div>
+        <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
+            <div className="w-full max-w-4xl bg-transparent text-white text-center mb-8">
                 <h1 className="text-3xl font-[Bembo-MT-Pro-Bold]">Add your personal details</h1>
                 <p className="mt-2 text-sm font-[Bembo-MT-Pro-Light]">
                     Share your details to build a tailored profile and connect with compatible matches.
@@ -269,6 +275,7 @@ const PersonalDetails: React.FC = () => {
                     </button>
                 </div>
             </form>
+            </div>
         </div>
     );
 };

@@ -23,7 +23,7 @@ const PlanCard = ({
     isDisabled = false,
 }: PlanCardProps) => (
     <div
-        className={`space-y-4 flex flex-col rounded-lg p-6 h-full ${isHighlighted ? "bg-[#60457E] text-white" : "bg-[#007EAF] shadow text-white border"
+        className={`space-y-4 flex flex-col rounded-lg p-6 h-full ${isHighlighted ? "bg-[#f63371] text-white" : "bg-[#fe80a8] shadow text-white border"
             }`}
     >
         <div className="space-y-4">
@@ -56,7 +56,7 @@ const PlanCard = ({
             <button
                 className={`flex w-80 items-center justify-center gap-4 rounded-lg border-2 ${isDisabled
                         ? "border-gray-400 bg-gray-200 text-gray-600 cursor-not-allowed"
-                        : "border-[#007EAF] bg-white text-[#007EAF]"
+                    : "border-[#FD5C90] bg-white text-[#FD5C90]"
                     } p-2`}
                 onClick={() => !isDisabled && onClick(id)}
                 disabled={isDisabled}

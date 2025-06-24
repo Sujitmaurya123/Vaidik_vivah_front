@@ -315,12 +315,12 @@ const Multistep = () => {
 
 
     return (
-        <div className={`min-w-screen relative flex min-h-screen flex-col items-center  ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'} px-2 text-white md:px-28 lg:px-60 3xl:px-60`}>
+        <div className={`min-w-screen relative flex min-h-screen flex-col items-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'} px-2 text-white md:px-28 lg:px-60 3xl:px-60`}>
             <div className="mt-5 flex w-full items-center justify-between md:mt-10  font-[Bembo-MT-Pro-Bold] ">
                 {page > 0 ? (
                     <button
                         type="button"
-                        className="h-[48px] gap-2 text-xl text-white  flex items-center  cursor-pointer"
+                        className="h-[48px] gap-2 text-xl text-white bg-[#FD5C90] p-6 rounded-3xl flex items-center  cursor-pointer"
                         onClick={handlePrevious}
                     >
                         <FaArrowLeftLong />   Back
@@ -328,7 +328,7 @@ const Multistep = () => {
                 ) : (
                     <button
                         type="button"
-                        className="h-[48px] gap-2 text-xl text-white flex items-center  cursor-pointer"
+                            className="h-[48px] gap-2 text-xl text-white bg-[#FD5C90] p-6 rounded-3xl flex items-center  cursor-pointer"
                         onClick={() => navigate("/")}
                     >
                         <FaArrowLeftLong />   Back
@@ -336,16 +336,16 @@ const Multistep = () => {
                 )}
 
                 <Link to={"/"} className="mx-auto  " >
-                    <img
-                        src="/logotest3.png"
-                        alt="Vaidikvivah Logo"
-                        className="md:w-72 md:h-24 h-20 w-60"
-                    />
+                <img
+              src="/logotest3.png"
+              alt="logo"
+              className="h-24 w-auto md:h-24 ml-3"
+            />
                 </Link>
             </div>
             {
                 isWelcome ? <Welcome handleNext={handleWelcomeContinue} /> :
-                    <div >
+                    <div className="rounded-3xl bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 ">
 
                         <div className="mt-10 w-full text-center ">
                             {/* <h2 className="text-2xl" style={{ fontFamily: "Bembo-MT-Pro-Bold, sans-serif" }}>
@@ -370,7 +370,7 @@ const Multistep = () => {
 
                                         <button
                                             type="button"
-                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 cursor-pointer rounded-md bg-white  px-2 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
+                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 cursor-pointer rounded-md bg-[#FD5C90]  px-4 py-4 ${isExclusive ? 'text-[#fffff]' : 'text-[#ffffff]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
                                             onClick={handleNext}
                                         >
                                             Continue <FaArrowRightLong />

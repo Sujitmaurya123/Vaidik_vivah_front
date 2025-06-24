@@ -124,7 +124,7 @@ const LoginModal: React.FC<LoginProps> = ({ isOpen, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-50">
-            <div className="bg-[#a44949]  p-6 rounded-lg w-full max-w-md relative sm:rounded-2xl  sm:p-8  overflow-y-auto max-h-[90vh]">
+            <div className="bg-gradient-to-t from-[#FD5C90] to-[#f78aad]  p-6 rounded-lg w-full max-w-md relative sm:rounded-2xl  sm:p-8  overflow-y-auto max-h-[90vh]">
                 {/* Close button */}
                 <button
                     onClick={onClose}
@@ -180,7 +180,7 @@ const LoginModal: React.FC<LoginProps> = ({ isOpen, onClose }) => {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#9e2727] cursor-pointer text-white py-2 text-lg rounded-lg hover:bg-[#9e2727] transition font-[Bembo-MT-Pro-Regular]"
+                        className="w-full bg-[#FD5C90] cursor-pointer text-white py-2 text-lg rounded-lg hover:bg-[#FD5C90] transition font-[Bembo-MT-Pro-Regular]"
                     >
                         {isLoading ? (
                             <LoadingOutlined className="text-white animate-spin" />

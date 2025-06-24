@@ -57,15 +57,16 @@ const GayatriDetails = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center bg-[#9e2727] p-4">
+        <div className="min-h-screen flex flex-col justify-center items-center bg-[#ffffff] ">
             
 
-            
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
             <form
                 onSubmit={onSubmit}
                 className="md:px-30 mt-5 grid grid-cols-1 md:grid-cols-2 md:gap-2 xl:px-40 2xl:px-60 3xl:mt-20 3xl:px-60"
             >
-                <div className="p-6 font-[Bembo-MT-Pro-Regular] rounded-2xl shadow-md w-full max-w-5xl text-center bg-white">
+                <div className="p-6 font-[Bembo-MT-Pro-Regular] rounded-2xl shadow-md w-full max-w-5xl text-center ">
                     <h2 className="text-xl font-[Bembo-MT-Pro-Bold] mb-4 text-gray-800">
                         Are you part of Gayatri Pariwar?
                     </h2>
@@ -114,6 +115,7 @@ const GayatriDetails = () => {
                     </div>
                 </div>
             </form>
+            </div>
           
         </div>
     );

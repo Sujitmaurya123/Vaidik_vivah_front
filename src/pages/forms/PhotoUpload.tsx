@@ -115,12 +115,16 @@ const PhotoUpload = () => {
 
 
     return (
-        <div className={`flex min-h-screen flex-col items-center justify-center ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'} px-5 md:px-20 lg:px-40 3xl:px-60`}>
-            <img
-                src="/logotest3.png"
-                alt="Vaidik Vivah Logo"
-                className="w-72 h-24 mx-auto mb-2"
-            />
+        <div className={`flex min-h-screen flex-col items-center justify-center ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'} px-5 md:px-20 lg:px-40 3xl:px-60`}>
+            <div className="flex  justify-center">
+                <img
+                    src="/logotest3.png"
+                    alt="logo"
+                    className="h-24 w-auto md:h-24 ml-3"
+                />
+            </div>
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
 
             <div className="mt-5 w-full flex-grow xl:mt-20 2xl:mt-10">
                 <div className="mb-6 text-center text-white md:mb-20">
@@ -166,7 +170,7 @@ const PhotoUpload = () => {
 
                         <label
                             htmlFor="file-upload"
-                            className="relative mt-4 h-40 w-[18rem] cursor-pointer rounded-md border border-dashed bg-[#007EAF] px-4 py-2 md:w-[30rem] xl:w-[40rem]"
+                                className="relative mt-4 h-40 w-[18rem] cursor-pointer rounded-md border border-dashed bg-[#FD5C90] px-4 py-2 md:w-[30rem] xl:w-[40rem]"
                         >
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
                                 <img
@@ -197,11 +201,12 @@ const PhotoUpload = () => {
             <div className="mb-5 flex w-full justify-end py-8 pb-4 xl:px-10 2xl:mb-4 2xl:px-0 3xl:mb-20 3xl:px-0">
                 <button
                     onClick={handleSubmit}
-                    className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} md:w-20 2xl:w-32`}
+                        className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} md:w-20 2xl:w-32`}
                     disabled={isLoading}
                 >
-                    {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : "Upload"}
+                        {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} animate-spin cursor-pointer`} /> : "Upload"}
                 </button>
+            </div>
             </div>
         </div>
     );

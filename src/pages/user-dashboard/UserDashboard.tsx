@@ -81,25 +81,25 @@ const UserDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col ">
       <Header />
-      <div className="flex-grow bg-[#E6F2F7]">
+      <div className="flex-grow bg-[#fceef2]">
         <div className="flex justify-center">
           <img title="bigad" src="/bigad.png" className="h-14 w-full" />
         </div>
 
-        <div className="px-4 py-6">
+        <div className="px-4 py-6 ">
           <div className="p-0 md:p-4">
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: isExclusive ? "#60457E" : "#007EAF",
+                  colorPrimary: isExclusive ? "#60457E" : "#fa4e85",
                 },
                 components: {
                   Tabs: {
-                    colorBgContainer: "#E6F2F7",
+                    colorBgContainer: "#fa4e85",
                     colorText: "black",
-                    colorBgTextActive: "#363636",
+                    colorBgTextActive: "#fa4e85",
                     colorBorder: "#E6F2F7",
                     fontSize: 18,
                     fontFamily: "Proxima-Nova-Semibold",
@@ -111,7 +111,7 @@ const UserDashboard: React.FC = () => {
                 activeKey={activeTab}
                 onChange={handleTabChange}
                 items={items}
-                tabBarStyle={{ backgroundColor: "#E6F2F7" }}
+                tabBarStyle={{ backgroundColor: "#f8e4ea" }}
               />
             </ConfigProvider>
           </div>

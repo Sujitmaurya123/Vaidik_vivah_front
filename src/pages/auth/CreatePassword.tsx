@@ -122,12 +122,15 @@ const CreatePassword = () => {
 
 
     return (
-        <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-[#9e2727]`}>
+        <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-[#fffff]`}>
             <div className="flex items-center justify-center mb-2 md:mb-10">
-                <Link to="/">
-                    <img src="/logotest3.png" alt="" className="w-72 h-24 top-10" />
-                </Link>
+                <img
+                    src="/logotest3.png"
+                    alt="logo"
+                    className="h-24 w-auto md:h-24 ml-3"
+                />
             </div>
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
 
             <div className="flex flex-col items-center justify-center mt-4">
                 <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
@@ -193,6 +196,7 @@ const CreatePassword = () => {
                         )}
                     </button>
                 </form>
+            </div>
             </div>
         </div>
     );

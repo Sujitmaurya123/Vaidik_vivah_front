@@ -25,14 +25,15 @@ const SuccessPage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`flex min-h-screen flex-col items-center ${isExclusive ? "bg-[#60457E]" : "bg-[#9e2727]"
+            className={`flex min-h-screen flex-col items-center ${isExclusive ? "bg-[#ffffff]" : "bg-[#ffffff]"
                 } px-5 md:px-20 lg:px-40 3xl:px-60`}
         >
             <img
                 src="/logotest3.png"
                 alt="logo"
-                className="mb-10 mt-10 h-auto w-40 md:w-36 lg:w-60"
+                className="h-24 w-auto md:h-24 ml-3"
             />
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
 
             <div className="flex flex-grow flex-col items-center justify-start text-center md:flex-grow-0 md:justify-center">
                 <motion.img
@@ -55,6 +56,7 @@ const SuccessPage: React.FC = () => {
                         Let your matchmaking journey begin with us
                     </p>
                 </div>
+            </div>
             </div>
         </motion.div>
     );

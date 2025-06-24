@@ -35,8 +35,8 @@ const faqs: FAQ[] = [
     answer: 'The Premium Plan includes all Standard Membership features plus unlimited matches, advanced search filters, profile visibility enhancements, priority customer support, and access to monthly webinars on relationship advice.'
   },
   {
-    question: 'What makes Wedlock different from other matchmaking and matrimonial platforms?',
-    answer: 'Wedlock is unique because it focuses on providing a comprehensive matrimonial service that caters to individuals from all backgrounds. Our AI-powered matchmaking system is designed specifically for meaningful connections rather than casual dating, ensuring a more serious approach to finding perfect match.'
+    question: 'What makes Vaidik vivah different from other matchmaking and matrimonial platforms?',
+    answer: 'Vaidik vivah is unique because it focuses on providing a comprehensive matrimonial service that caters to individuals from all backgrounds. Our AI-powered matchmaking system is designed specifically for meaningful connections rather than casual dating, ensuring a more serious approach to finding perfect match.'
   },
   {
     question: 'How do I create a profile on Vaidik Vivah?',
@@ -100,14 +100,14 @@ const FAQs: React.FC = () => {
   const FAQItem: React.FC<FAQItemProps> = ({ faq, isOpen, onClick }) => (
     <div className="space-y-5">
       <button
-        className={`w-full text-left py-4 px-6 flex justify-between items-center border mb-10 ${isExclusive ? 'bg-[#60457E]' : 'bg-[#007EAF]'} border-white rounded-2xl`}
+        className={`w-full text-left py-4 px-6 flex justify-between items-center border mb-10 ${isExclusive ? 'bg-[#60457E]' : 'bg-[#FD5C90]'} border-white rounded-2xl`}
         onClick={onClick}
       >
         <span className="text-white font-[Bembo-MT-Pro-Regular]">{faq.question}</span>
         <span className="text-white">{isOpen ? '-' : '+'}</span>
       </button>
       {isOpen && (
-        <div className="bg-[#FFD27A] rounded-2xl text-black py-4 px-6 font-[Bembo-MT-Pro-Regular]">
+        <div className="bg-[#f78eaf] rounded-2xl text-white py-4 px-6 font-[Bembo-MT-Pro-Regular]">
           {faq.answer.split('\n').map((line, index) => (
             <React.Fragment key={index}>
               {line}

@@ -109,14 +109,14 @@ const Header = memo(() => {
 
 
     return (
-        <div className={`fixed z-10 h-20 w-full ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'}`}>
+        <div className={`fixed z-10 h-20 w-full ${isExclusive ? 'bg-[#fdeaf0]' : 'bg-[#fdeaf0]'}`}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 ">
                 <div className="">
                     <Link to="/user-dashboard">
                         <img
                             src="/logotest3.png"
                             alt="logo"
-                            className="w-72 h-24"
+                            className="h-24 w-auto md:h-24 ml-3 mt-4"
                         />
                     </Link>
                 </div>

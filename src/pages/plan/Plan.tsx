@@ -199,7 +199,7 @@ const PricingPage = () => {
 
           <div className="mt-5 flex h-16 w-60 items-center gap-8 rounded-full bg-[#FFF9EE] p-3 xl:mt-0">
             <button
-              className={`flex h-10 w-32 items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === "Monthly" ? "bg-[#FFC759] w-52" : "bg-transparent"
+              className={`flex h-10 w-32 items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === "Monthly" ? "bg-[#f99dba] w-52" : "bg-transparent"
                 }`}
               onClick={() => setActiveTab("Monthly")}
             >
@@ -212,7 +212,7 @@ const PricingPage = () => {
             </button>
 
             <button
-              className={`flex h-10 w-32 items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === "Yearly" ? "bg-[#FFC759] w-52" : "bg-transparent"
+              className={`flex h-10 w-32 items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === "Yearly" ? "bg-[#f98daf] w-52" : "bg-transparent"
                 }`}
               onClick={() => setActiveTab("Yearly")}
             >
@@ -248,7 +248,7 @@ const PricingPage = () => {
       <div className="rounded-lg bg-[#FFFFFF]">
         {
           isExclusive ? <div></div> : <div className="flex justify-end p-4">
-            <Button variant="contained" onClick={handleUpgradeClick} sx={{ backgroundColor: `${isExclusive ? '#8E69B4' : '#007EAF'}`, textTransform: 'none', }}>
+            <Button variant="contained" onClick={handleUpgradeClick} sx={{ backgroundColor: `${isExclusive ? '#8E69B4' : '#FD5C90'}`, textTransform: 'none', }}>
               Upgrade Plan
             </Button>
           </div>

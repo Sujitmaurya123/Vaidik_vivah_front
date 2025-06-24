@@ -129,11 +129,17 @@ const OtherDetails: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#9e2727] flex items-center justify-center px-4">
-            <div className="max-w-4xl w-full  text-white p-8 rounded-lg">
+        <div className="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center px-4">
                 <div className="flex  justify-center">
-                    <img src="/logotest3.png" alt="Logo" className="w-72 h-24 " />
+                <img
+                    src="/logotest3.png"
+                    alt="logo"
+                    className="h-24 w-auto md:h-24 ml-3"
+                />
                 </div>
+            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
+            <div className="max-w-4xl w-full  text-white p-8 rounded-lg">
                 <h1 className="text-3xl font-bold mb-2 text-center font-[Bembo-MT-Pro-Bold]">Other Details</h1>
                 <p className="text-center mb-8 font-[Bembo-MT-Pro-Light]">
                     Including additional details enriches your profile, making it easier to find meaningful and compatible connections
@@ -279,13 +285,14 @@ const OtherDetails: React.FC = () => {
                     <div className="md:col-span-2 flex justify-end mb-5">
                         <button
                             type="submit"
-                            className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'}
+                                className={`w-full rounded-[0.5rem] bg-[#F9F5FFE5] px-4 py-2 ${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'}
               md:w-20 2xl:w-32`}
                         >
-                            {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Save'}
+                                {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} animate-spin cursor-pointer`} /> : 'Save'}
                         </button>
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     );
