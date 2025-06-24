@@ -123,13 +123,13 @@ const CreatePassword = () => {
 
     return (
         <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-[#fffff]`}>
-            <div className="flex items-center justify-center mb-2 md:mb-10">
-                <img
-                    src="/logotest3.png"
-                    alt="logo"
-                    className="h-24 w-auto md:h-24 ml-3"
-                />
-            </div>
+            <Link to="/" className="fixed top-10">
+                            <img
+                                src="/logotest3.png"
+                                alt="logo"
+                                className="h-24 w-auto md:h-24 ml-3"
+                            />
+            </Link>
             <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
 
             <div className="flex flex-col items-center justify-center mt-4">

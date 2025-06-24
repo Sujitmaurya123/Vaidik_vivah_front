@@ -92,9 +92,13 @@ const ForgotPassword = () => {
     return (
         <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#9e2727] `}>
             <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
-                <Link to={"/"} className='fixed top-8'>
-                    <img src="/logotest3.png" alt="Logo" className='w-72 h-24 ' />
-                </Link>
+                <Link to="/" className="fixed top-10">
+                                <img
+                                    src="/logotest3.png"
+                                    alt="logo"
+                                    className="h-24 w-auto md:h-24 ml-3"
+                                />
+                            </Link>
             </div>
 
             <div className="flex flex-col items-center justify-center  mt-8 mb-4">

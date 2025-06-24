@@ -107,11 +107,14 @@ const VerifyOtp = () => {
     return (
         <div className="min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#ffffff]">
             <div className="flex items-center justify-center mb-14">
+                  <Link to={"/"} className='fixed top-4'>
+                  
                 <img
                     src="/logotest3.png"
                     alt="logo"
                     className="h-24 w-auto md:h-24 ml-3"
                 />
+                  </Link>
             </div>
             <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
 

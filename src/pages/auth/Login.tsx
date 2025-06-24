@@ -136,13 +136,19 @@ const Login = () => {
     
 
   return (
-    <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive ? 'bg-[#9e2727]' : 'bg-[#9e2727]'}
+    <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'}
 } `}>
-    <div className="flex items-center justify-center mb-10  ">
-      <Link to="/" className="fixed top-2">
-      <img src="/logotest3.png" alt=""  className='w-auto md:w-60 lg:w-70 h-24 ' />
+      <Link to="/" className="fixed top-1">
+          
+            <img
+              src="/logotest3.png"
+              alt="logo"
+              className="h-24 w-auto md:h-24 ml-3"
+            />
+         
       </Link>
-    </div>
+      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+
 
     <div className="flex flex-col items-center justify-center  mt-12">
       <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
@@ -155,7 +161,7 @@ const Login = () => {
         <p className="mt-4 md:text-lg text-center"> Welcome back! Please enter your details. </p>
       </div>
 
-      <div  className="w-full max-w-md px-2   py-2 mt-2">
+         <div  className="w-full max-w-md px-2   py-2 mt-2">
         <form  onSubmit={handleSubmit(onSubmit)}>
           <div className="rounder-[8px]">
             <Input
@@ -193,6 +199,7 @@ const Login = () => {
               Create an account
             </button>
 
+          </div>
           </div>
 
   </div> 
